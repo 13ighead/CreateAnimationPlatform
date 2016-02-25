@@ -51,6 +51,26 @@ exports.getLocations = function () {
                 stylus()
             ]
         },
+        // ajax
+        {
+            location: function (req) {
+                return req.headers['x-requested-with'] && req.headers['x-requested-with'].toLowerCase() == 'xmlhttprequest';
+            },
+            handler: [
+                php('php-cgi', '', function (context) {
+
+                    var request = context.request;
+                    var pathname = request.pathname;
+                    var search = request.search || '';
+                    var query = request.query || {};
+
+                    return {
+                        pathname: '/mock/ajax.php',
+                        search: search + (search.indexOf('?') === -1 ? '?' : '&') + 'pathname=' + pathname + '&webroot=' + __dirname
+                    };
+                })
+            ]
+        },
         // 后缀为php的请求重定向
         {
             location: function (req) {
