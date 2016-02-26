@@ -17,6 +17,7 @@
     {%/block%}
     {%block name="footer"%}
     {%/block%}
+    {%block name="mainjs"%}
     <script>
         require.config({
             'baseUrl': '../../src',
@@ -40,13 +41,15 @@
             ],
             'urlArgs': 'v={edp-variable:version}'
         });
-    {%block name="mainjs"%}
-        require(['src/common/main'], function (main) {
-            main.init();
-        });
-    {%/block%}
     </script>
-    {%block name="js"%}{%/block%}
+    {%/block%}
+    {%block name="js"%}
+    <script>
+    require(['src/common/main'], function (main) {
+        main.init();
+    });
+    </script>
+    {%/block%}
 </body>
 </html>
 {%/strip%}

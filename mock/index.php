@@ -24,7 +24,7 @@
 
     $res = json_decode($data, true);
 
-    $pathname = $_GET['webroot'] . '/src/'. $pathname .'.tpl';
+    $pathname = $_GET['webroot'] . '/smarty/'. $pathname .'.tpl';
     $res['feRoot'] = '';
 
     foreach ($res as $key => $value) {
