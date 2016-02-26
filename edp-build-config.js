@@ -2,7 +2,7 @@
  * @file config edp-build
  * @author EFE
  */
-
+/*eslint-disable*/
 /* globals LessCompiler, CssCompressor, JsCompressor, PathMapper, AddCopyright, ModuleCompiler, TplMerge */
 
 exports.input = __dirname;
@@ -21,14 +21,23 @@ exports.getProcessors = function () {
     var pathMapperProcessor = new PathMapper();
     var addCopyright = new AddCopyright();
 
+    var variable = new VariableSubstitution({
+        files: ['*.tpl'],
+        variables: {
+            version: process.env.BUILD_NUMBER || +new Date()
+        }
+    });
+
     return {
         'default': [
-            lessProcessor, moduleProcessor, pathMapperProcessor
+            lessProcessor, moduleProcessor, pathMapperProcessor,
+            variable
         ],
 
         'release': [
             lessProcessor, cssProcessor, moduleProcessor,
-            jsProcessor, pathMapperProcessor, addCopyright
+            jsProcessor, pathMapperProcessor, addCopyright,
+            variable
         ]
     };
 };
