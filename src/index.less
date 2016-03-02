@@ -8,8 +8,7 @@
     background: #ccc;
 }
 
-.scene {
-    display: block;
+.cap-scene {
     position: absolute;
     width: 600px;
     top: 0;
@@ -17,12 +16,12 @@
     height: 400px;
     transform-origin: 50% 50% 0;
     z-index: 1;
-    opacity: 1;
     background-color: #fff;
-    border: 1px solid #000;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 0 #ccc;
 }
 
-.element-container {
+.cap-element-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -32,9 +31,13 @@
     z-index: 1;
 }
 
-.element {
+.cap-element {
     pointer-events: auto;
     z-index: 2;
+}
+
+.cap-element-static {
+    pointer-events: none;
 }
 
 .origin,
@@ -51,6 +54,9 @@
     transform: scale(2);
 }
 
+
+//
+
 .inner1 {
     transform-origin: center;
     background: #555;
@@ -59,4 +65,8 @@
 .inner2 {
     transform-origin: left top;
     background: #999;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
 }
