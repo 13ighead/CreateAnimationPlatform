@@ -13,28 +13,28 @@
 <div class="cap-scene-container">
     <div class="cap-scene outer">
         <div class="cap-element-container">
-            <div class="cap-element inner inner1" data-draggable="true">
+            <div class="cap-element inner inner1" data-draggable="element">
                 <div class="cap-element-control-layer">
                     <div class="cap-element-control-row">
-                        <div class="cap-element-control-anchor"></div>
-                        <div class="cap-element-control-anchor"></div>
-                        <div class="cap-element-control-anchor"></div>
+                        <div class="cap-element-control-anchor cap-element-control-anchor-nwse" data-draggable="anchor" data-anchor="scale"></div>
+                        <div class="cap-element-control-anchor  cap-element-control-anchor-ns" data-draggable="anchor" data-anchor="height"></div>
+                        <div class="cap-element-control-anchor cap-element-control-anchor-nesw" data-draggable="anchor" data-anchor="scale"></div>
                     </div>
                     <div class="cap-element-control-row">
-                        <div class="cap-element-control-anchor"></div>
-                        <div class="cap-element-control-anchor"></div>
+                        <div class="cap-element-control-anchor cap-element-control-anchor-ew" data-draggable="anchor" data-anchor="width"></div>
+                        <div class="cap-element-control-anchor cap-element-control-anchor-ew" data-draggable="anchor" data-anchor="width"></div>
                     </div>
                     <div class="cap-element-control-row">
-                        <div class="cap-element-control-anchor"></div>
-                        <div class="cap-element-control-anchor"></div>
-                        <div class="cap-element-control-anchor"></div>
+                        <div class="cap-element-control-anchor cap-element-control-anchor-nesw" data-draggable="anchor" data-anchor="scale"></div>
+                        <div class="cap-element-control-anchor cap-element-control-anchor-ns" data-draggable="anchor" data-anchor="height"></div>
+                        <div class="cap-element-control-anchor cap-element-control-anchor-nwse" data-draggable="anchor" data-anchor="scale"></div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="cap-element-container">
-            <div class="cap-element inner inner2" data-draggable="true">
+            <div class="cap-element inner inner2" data-draggable="element">
             </div>
         </div>
 

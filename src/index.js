@@ -30,66 +30,120 @@ define(function (require) {
         };
     }
 
-    sceneDom.on('mousedown', function (event) {
+    function getDistanceBetweenTwoPoints(point1, point2) {
+        return Math.sqrt((point2.x -= point1.x) * point2.x + (point2.y -= point1.y) * point2.y);
+    }
 
+    var dragElementHandler = {
+        mousedown: function (event) {
+            var target = event.target;
+            var $target = $(target);
+
+            if (!$target.data('draggable')) {
+                return;
+            }
+
+            var mouseX = event.clientX;
+            var mouseY = event.clientY;
+
+            draggableDom.addClass('cap-element-static');
+            $target.removeClass('cap-element-static');
+
+            this.beginMousePosition = {
+                x: mouseX,
+                y: mouseY
+            };
+
+            var a = matrix2kv($target.css('transform'));
+
+            this.beginDomPosition = {
+                x: a.translateX,
+                y: a.translateY
+            };
+
+            this.activeSymbol = target;
+        },
+        mousemove: function (event) {
+            var $target = $(this.activeSymbol);
+
+            if (!this.beginMousePosition) {
+                return;
+            }
+            var mouseX = event.clientX;
+            var mouseY = event.clientY;
+            var offsetMousePosition = {
+                x: mouseX - this.beginMousePosition.x,
+                y: mouseY - this.beginMousePosition.y
+            };
+            // console.log(offsetMousePosition);
+            // var offsetY = clientY - this.capClientY;
+
+            var a = matrix2kv($target.css('transform'));
+            a.translateX = this.beginDomPosition.x + offsetMousePosition.x;
+            a.translateY = this.beginDomPosition.y + offsetMousePosition.y;
+            $target.css('transform', etpl.render('transformTpl', a));
+            // console.log(etpl.render('transformTpl', a));
+        },
+        mouseup: function (event) {
+            this.beginMousePosition = null;
+            this.beginDomPosition = null;
+
+            draggableDom.removeClass('cap-element-static');
+        }
+    };
+
+    var dragAnchorHandler = {
+        mousedown: function (event) {
+
+        },
+        mousemove: function (event) {
+
+        },
+        mouseup: function (event) {
+
+        }
+    };
+
+    sceneDom.on('mousedown', function (event) {
         var target = event.target;
         var $target = $(target);
+        var dragType = $target.data('draggable');
 
-        if (!$target.data('draggable')) {
-            return;
+        if (dragType === 'element') {
+            dragElementHandler.mousedown(event);
         }
 
-        var mouseX = event.clientX;
-        var mouseY = event.clientY;
-
-        draggableDom.addClass('cap-element-static');
-        $target.removeClass('cap-element-static');
-
-        this.beginMousePosition = {
-            x: mouseX,
-            y: mouseY
-        };
-
-        var a = matrix2kv($target.css('transform'));
-
-        this.beginDomPosition = {
-            x: a.translateX,
-            y: a.translateY
-        };
-
-        this.activeSymbol = target;
-
+        if (dragType === 'anchor') {
+            dragAnchorHandler.mousedown(event);
+        }
     });
 
     sceneDom.on('mousemove', function (event) {
+        var target = event.target;
+        var $target = $(target);
+        var dragType = $target.data('draggable');
 
-        var $target = $(this.activeSymbol);
-
-        if (!this.beginMousePosition) {
-            return;
+        if (dragType === 'element') {
+            dragElementHandler.mousemove(event);
         }
-        var mouseX = event.clientX;
-        var mouseY = event.clientY;
-        var offsetMousePosition = {
-            x: mouseX - this.beginMousePosition.x,
-            y: mouseY - this.beginMousePosition.y
-        };
-        // console.log(offsetMousePosition);
-        // var offsetY = clientY - this.capClientY;
 
-        var a = matrix2kv($target.css('transform'));
-        a.translateX = this.beginDomPosition.x + offsetMousePosition.x;
-        a.translateY = this.beginDomPosition.y + offsetMousePosition.y;
-        $target.css('transform', etpl.render('transformTpl', a));
-        // console.log(etpl.render('transformTpl', a));
+        if (dragType === 'anchor') {
+            dragAnchorHandler.mousemove(event);
+        }
     });
 
     sceneDom.on('mouseup', function (event) {
+        var target = event.target;
+        var $target = $(target);
+        var dragType = $target.data('draggable');
 
-        this.beginMousePosition = null;
-        this.beginDomPosition = null;
+        if (dragType === 'element') {
+            dragElementHandler.mouseup(event);
+        }
 
-        draggableDom.removeClass('cap-element-static');
+        if (dragType === 'anchor') {
+            dragAnchorHandler.mouseup(event);
+        }
     });
 
     function init() {
