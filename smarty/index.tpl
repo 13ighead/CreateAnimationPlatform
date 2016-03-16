@@ -14,6 +14,22 @@
     <div class="cap-scene outer">
         <div class="cap-element-container">
             <div class="cap-element inner inner1" data-draggable="true">
+                <div class="cap-element-control-layer">
+                    <div class="cap-element-control-row">
+                        <div class="cap-element-control-anchor"></div>
+                        <div class="cap-element-control-anchor"></div>
+                        <div class="cap-element-control-anchor"></div>
+                    </div>
+                    <div class="cap-element-control-row">
+                        <div class="cap-element-control-anchor"></div>
+                        <div class="cap-element-control-anchor"></div>
+                    </div>
+                    <div class="cap-element-control-row">
+                        <div class="cap-element-control-anchor"></div>
+                        <div class="cap-element-control-anchor"></div>
+                        <div class="cap-element-control-anchor"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -22,10 +38,10 @@
             </div>
         </div>
 
-        <div class="cap-element-container">
+        <!-- <div class="cap-element-container">
             <div class="origin">
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 {%strip%}

@@ -1,43 +1,9 @@
-@import './common/base.less';
+@import './common/style/base.less';
+@import './common/style/scene.less';
+@import './common/style/element.less';
 
 .outer {
-    position: absolute;
-    width: 400px;
-    height: 400px;
     margin: 100px;
-    background: #ccc;
-}
-
-.cap-scene {
-    position: absolute;
-    width: 600px;
-    top: 0;
-    left: 0;
-    height: 400px;
-    transform-origin: 50% 50% 0;
-    z-index: 1;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 0 #ccc;
-}
-
-.cap-element-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.cap-element {
-    pointer-events: auto;
-    z-index: 2;
-}
-
-.cap-element-static {
-    pointer-events: none;
 }
 
 .origin,
@@ -53,9 +19,6 @@
 .inner {
     transform: scale(2);
 }
-
-
-//
 
 .inner1 {
     transform-origin: center;
