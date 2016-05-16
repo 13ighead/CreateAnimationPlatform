@@ -1,11 +1,13 @@
 @import './common/style/base.less';
+@import './common/style/layout.less';
 @import './common/style/scene.less';
 @import './common/style/element.less';
+@import './common/style/inspector.less';
 
-.outer {
-    margin: 100px;
+html,
+body {
+    height: 100%;
 }
-
 .origin,
 .inner {
     width: 100px;
@@ -23,6 +25,7 @@
 .inner1 {
     transform-origin: center;
     background: #555;
+    transform: rotate(40deg);
 }
 
 .inner2 {

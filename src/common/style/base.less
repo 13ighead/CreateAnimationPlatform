@@ -1,3 +1,27 @@
 @import '../../../dep/est/2.0.4/src/all';
 
 .global-reset();
+
+input {
+    border: 0;
+    padding: 0;
+    outline: none;
+    margin: 0;
+    vertical-align: middle;
+}
+
+input[type=color] {
+    background: none;
+}
+
+.cap-border-top,
+.cap-border-bottom {
+    border-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAFklEQVQIW2M8c+bMf0YGBgYGCAHiAgBDaQbL1IfwXwAAAABJRU5ErkJggg==") 2 0 stretch;
+}
+.cap-border-top {
+    border-width:1px 0 0;
+}
+
+.cap-border-bottom {
+    border-width:0 0 1px;
+}

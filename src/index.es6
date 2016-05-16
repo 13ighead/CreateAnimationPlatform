@@ -1,16 +1,18 @@
-'use strict';
-
 /*
  * @file Entrance
  * @author Bighead
  */
 define(function (require) {
-
+    
     var $ = window.$ = require('jquery');
     var etpl = require('etpl');
     var draggableDom = $('[data-draggable]');
-    var sceneDom = $('.cap-scene-container');
-    var transformTpl = ['<!-- target: transformTpl -->', 'translateX(${translateX}px) translateY(${translateY}px)', 'scaleX(${scaleX}) scaleY(${scaleY})', 'skewX(${skewX}) skewY(${skewY})', 'rotate(${rotate}deg)'].join(' ');
+    var sceneDom = $('.cap-scene');
+    var transformTpl = ['<!-- target: transformTpl -->',
+        'translateX(${translateX}px) translateY(${translateY}px)',
+        'scaleX(${scaleX}) scaleY(${scaleY})',
+        'skewX(${skewX}) skewY(${skewY})',
+        'rotate(${rotate}deg)'].join(' ');
 
     /*
      * transform2D矩阵转KV
@@ -44,8 +46,8 @@ define(function (require) {
      */
     function getTransformPositionWithMatrix(point, matrixString) {
         var matrixArray = matrixString.replace(/matrix\(|\)|\ /g, '').split(',');
-        var newX = +point.x * +matrixArray[0] + +point.y * +matrixArray[2] + +matrixArray[4];
-        var newY = +point.x * +matrixArray[1] + +point.y * +matrixArray[3] + +matrixArray[5];
+        var newX = (+point.x * +matrixArray[0]) + (+point.y * +matrixArray[2]) + (+matrixArray[4]);
+        var newY = (+point.x * +matrixArray[1]) + (+point.y * +matrixArray[3]) + (+matrixArray[5]);
 
         return {
             x: newX,
@@ -84,7 +86,7 @@ define(function (require) {
      * @return {number}        距离
      */
     function getDistanceBetweenTwoPoints(point1, point2) {
-        return Math.sqrt(Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2));
+        return Math.sqrt(Math.pow((point2.x - point1.x), 2) + Math.pow((point2.y - point1.y), 2));
     }
 
     /*
@@ -98,10 +100,9 @@ define(function (require) {
     }
 
     var dragElementHandler = {
-        mousedown: function mousedown(event) {
+        mousedown: function (event) {
             var target = event.target;
             var $target = $(target);
-            sceneDom.targetDom = target;
 
             if (!$target.data('draggable')) {
                 return;
@@ -113,60 +114,61 @@ define(function (require) {
             draggableDom.addClass('cap-element-static');
             $target.removeClass('cap-element-static');
 
-            sceneDom.beginMousePosition = {
+            target.beginMousePosition = {
                 x: mouseX,
                 y: mouseY
             };
 
             var a = matrix2kv($target.css('transform'));
 
-            sceneDom.beginDomPosition = {
+            target.beginDomPosition = {
                 x: a.translateX,
                 y: a.translateY
             };
 
-            sceneDom.absolutePositionOfTransformOrigin = getAbsolutePositionOfTransformOrigin(target);
+            target.absolutePositionOfTransformOrigin = getAbsolutePositionOfTransformOrigin(target);
+
         },
-        mousemove: function mousemove(event) {
-            var target = sceneDom.targetDom;
+        mousemove: function (event) {
+            var target = event.target;
             var $target = $(target);
 
-            if (!sceneDom.beginMousePosition) {
+            if (!target.beginMousePosition) {
                 return;
             }
 
             var mouseX = event.clientX;
             var mouseY = event.clientY;
             var offsetMousePosition = {
-                x: mouseX - sceneDom.beginMousePosition.x,
-                y: mouseY - sceneDom.beginMousePosition.y
+                x: mouseX - target.beginMousePosition.x,
+                y: mouseY - target.beginMousePosition.y
             };
 
             var curTransform = matrix2kv($target.css('transform'));
 
-            curTransform.translateX = sceneDom.beginDomPosition.x + offsetMousePosition.x;
-            curTransform.translateY = sceneDom.beginDomPosition.y + offsetMousePosition.y;
+            curTransform.translateX = target.beginDomPosition.x + offsetMousePosition.x;
+            curTransform.translateY = target.beginDomPosition.y + offsetMousePosition.y;
             $target.css('transform', etpl.render('transformTpl', curTransform));
-        },
-        mouseup: function mouseup(event) {
-            var target = sceneDom.targetDom;
 
-            sceneDom.targetDom = null;
-            sceneDom.beginMousePosition = null;
-            sceneDom.beginDomPosition = null;
+        },
+        mouseup: function (event) {
+            var target = event.target;
+
+            target.beginMousePosition = null;
+            target.beginDomPosition = null;
 
             draggableDom.removeClass('cap-element-static');
         }
     };
 
     var dragAnchorHandler = {
-        mousedown: function mousedown(event) {
+        mousedown: function (event) {
             var target = event.target;
             var $target = $(target);
 
             var element = getElementByAnchor($target);
 
-            console.log(element[0].absolutePositionOfTransformOrigin);
+            console.log(element[0].absolutePositionOfTransformOrigin)
 
             if (!$target.data('draggable')) {
                 return;
@@ -183,7 +185,7 @@ define(function (require) {
                 y: mouseY
             };
         },
-        mousemove: function mousemove(event) {
+        mousemove: function (event) {
 
             if (!sceneDom.beginMousePosition) {
                 return;
@@ -195,7 +197,7 @@ define(function (require) {
                 y: mouseY
             });
         },
-        mouseup: function mouseup(event) {
+        mouseup: function (event) {
             sceneDom.beginMousePosition = null;
         }
     };
@@ -220,7 +222,7 @@ define(function (require) {
         var $target = $(target);
         var dragType = $target.data('draggable');
 
-        if (sceneDom.targetDom) {
+        if (dragType === 'element') {
             dragElementHandler.mousemove(event);
         }
 
@@ -253,5 +255,3 @@ define(function (require) {
         init: init
     };
 });
-
-//# sourceMappingURL=index.js.map
