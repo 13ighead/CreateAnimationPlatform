@@ -15,6 +15,7 @@ cap-preview {
     .cap-inspector-container {
         flex: 0 0 300px;
         z-index: 2;
+        height: 100%;
     }
 }
 

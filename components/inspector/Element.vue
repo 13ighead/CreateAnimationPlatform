@@ -2,7 +2,7 @@
 </style>
 
 <template>
-<div class="cap-inspector-panel element" data-inspector-type="element">
+<div class="cap-inspector-panel element" data-inspector-type="element"  style="display: none;">
     <header class="cap-inspector-panel-header cap-border-bottom">
         <h3 class="cap-inspector-panel-header-title">效果</h3>
     </header>
