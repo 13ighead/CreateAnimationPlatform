@@ -2,7 +2,7 @@
 </style>
 
 <template>
-<div class="cap-inspector-panel measure" data-inspector-type="measure">
+<div class="cap-inspector-panel measure" data-inspector-type="measure" style="display: none;">
     <header class="cap-inspector-panel-header cap-border-bottom">
         <h3 class="cap-inspector-panel-header-title">布局</h3>
     </header>
@@ -13,12 +13,10 @@
             </header>
             <div class="cap-inspector-panel-row">
                 <div class="cap-inspector-panel-item">
-                    <label>左</label>
-                    <input type="number" value=0>
+                    <cap-input title="左" :value="0" :type="number"></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
-                    <label>上</label>
-                    <input type="number" value=0>
+                    <cap-input title="上" :value="0" :type="number"></cap-input>
                 </div>
             </div>
         </section>
@@ -28,12 +26,10 @@
             </header>
             <div class="cap-inspector-panel-row">
                 <div class="cap-inspector-panel-item">
-                    <label>宽度</label>
-                    <input type="number" value=0>
+                    <cap-input title="宽度" :value="0" :type="number"></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
-                    <label>高度</label>
-                    <input type="number" value=0>
+                    <cap-input title="高度" :value="0" :type="number"></cap-input>
                 </div>
             </div>
             <div class="cap-inspector-panel-row">
@@ -49,12 +45,10 @@
             </header>
             <div class="cap-inspector-panel-row">
                 <div class="cap-inspector-panel-item">
-                    <label>宽度</label>
-                    <input type="number" value=0>
+                    <cap-input title="宽度" :value="0" :type="number"></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
-                    <label>高度</label>
-                    <input type="number" value=0>
+                    <cap-input title="高度" :value="0" :type="number"></cap-input>
                 </div>
             </div>
             <div class="cap-inspector-panel-row">
@@ -70,16 +64,13 @@
             </header>
             <div class="cap-inspector-panel-row">
                 <div class="cap-inspector-panel-item">
-                    <label>x轴</label>
-                    <input type="number" value=0>
+                    <cap-input title="x轴" :value="0" :type="number"></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
-                    <label>y轴</label>
-                    <input type="number" value=0>
+                    <cap-input title="y轴" :value="0" :type="number"></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
-                    <label>z轴</label>
-                    <input type="number" value=0>
+                    <cap-input title="z轴" :value="0" :type="number"></cap-input>
                 </div>
             </div>
         </section>
@@ -110,3 +101,13 @@
 </div>
 
 </template>
+
+<script>
+import Input from '../common/Input.vue';
+
+export default {
+    components: {
+        capInput: Input
+    }
+};
+</script>

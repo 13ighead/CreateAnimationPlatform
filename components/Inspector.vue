@@ -14,60 +14,6 @@ cap-inspector {
         background-color: #fff;
         width: 100%;
         height: 40px;
-
-        .cap-inspector-nav {
-            position: relative;
-            display: flex;
-            height: 100%;
-            justify-content: space-around;
-            align-items: center;
-            overflow: hidden;
-
-            .cap-inspector-tab {
-                display: inline-block;
-                height: 100%;
-                flex: 1;
-                color: #000;
-                text-decoration: none;
-                text-align: center;
-
-                abbr {
-                    display: inline-block;
-                    height: 40px;
-                    line-height: 40px;
-                }
-
-                &:hover {
-                    background-color: #ddd;
-                }
-            }
-
-            .cap-inspector-tab-selected {
-                background-color: #eee;
-            }
-
-            .cap-inspector-tab-highlightline {
-                position: absolute;
-                left: 0;
-                bottom: 0;
-                height: 2px;
-                width: 33.33333333%;
-                background-color: @cap-inspector-tab-selectedcolor;
-                transition: left 0.5s ease-in-out;
-            }
-
-            .measure:hover ~ .cap-inspector-tab-highlightline {
-                left: 0;
-            }
-
-            .element:hover ~ .cap-inspector-tab-highlightline {
-                left: 33.33333333%;
-            }
-
-            .typesetting:hover ~ .cap-inspector-tab-highlightline {
-                left: 66.66666666%;
-            }
-        }
     }
 
     .cap-inspector-panel {
@@ -157,12 +103,9 @@ cap-inspector {
 <template>
     <cap-inspector>
         <header class="cap-inspector-header">
-            <nav class="cap-inspector-nav">
-                <a data-inspector-tab-type="measure" href="javascript:void(0);" class="cap-inspector-tab cap-inspector-tab-selected measure"><abbr title="Measure">布局</abbr></a>
-                <a data-inspector-tab-type="element" href="javascript:void(0);" class="cap-inspector-tab element"><abbr title="Element">效果</abbr></a>
-                <a data-inspector-tab-type="typesetting" href="javascript:void(0);" class="cap-inspector-tab typesetting"><abbr title="Typesetting">排版</abbr></a>
-                <div class="cap-inspector-tab-highlightline"></div>
-            </nav>
+            <cap-tab :default-index=0>
+                <cap-tab-item v-for="item in items" :index="$index">{{item.title}}</cap-tab-item>
+            </cap-tab>
         </header>
         <measure></measure>
         <element></element>
@@ -177,12 +120,31 @@ cap-inspector {
 import Measure from './inspector/Measure.vue';
 import Element from './inspector/Element.vue';
 import Typesetting from './inspector/Typesetting.vue';
+import CapTab from './common/Tab.vue';
+import CapTabItem from './common/Tab-item.vue';
 
 export default {
     components: {
         Measure,
         Element,
-        Typesetting
+        Typesetting,
+        CapTab,
+        CapTabItem
+    },
+    data () {
+        return {
+            items: [
+                {
+                    title: "布局"
+                },
+                {
+                    title: "效果"
+                },
+                {
+                    title: "排版"
+                }
+            ]
+        }
     }
 };
 

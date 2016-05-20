@@ -2,7 +2,7 @@
 </style>
 
 <template>
-<div class="cap-inspector-panel element" data-inspector-type="element"  style="display: none;">
+<div class="cap-inspector-panel element" data-inspector-type="element">
     <header class="cap-inspector-panel-header cap-border-bottom">
         <h3 class="cap-inspector-panel-header-title">效果</h3>
     </header>
@@ -26,13 +26,12 @@
                 <h4>边框</h4>
             </header>
             <div class="cap-inspector-panel-row">
+
                 <div class="cap-inspector-panel-item">
-                    <label>宽度</label>
-                    <input type="number" value=0>
+                    <cap-input title="宽度" :value="0" :type="number"></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
-                    <label>半径</label>
-                    <input type="number" value=0>
+                    <cap-input title="半径" :value="0" :type="number"></cap-input>
                 </div>
             </div>
             <div class="cap-inspector-panel-row">
@@ -51,12 +50,10 @@
                     </select>
                 </div>
                 <div class="cap-inspector-panel-item" style="display:none;">
-                    <label>补白</label>
-                    <input type="number" value=0>
+                    <cap-input title="补白" :value="0" :type="number"></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
-                    <label>颜色</label>
-                    <input type="color" value=0>
+                    <cap-input title="颜色" :value="0" :type="color"></cap-input>
                 </div>
             </div>
         </section>
@@ -85,16 +82,12 @@
             </header>
             <div>
                 <div class="cap-inspector-panel-item">
-                    <label>x</label>
-                    <input type="number" value=0>
-                    <label>y</label>
-                    <input type="number" value=0>
+                    <cap-input title="x" :value="0" :type="number"></cap-input>
+                    <cap-input title="y" :value="0" :type="number"></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
-                    <label>模糊度</label>
-                    <input type="number" min=0 value=0>
-                    <label>颜色</label>
-                    <input type="color">
+                    <cap-input title="模糊度" :value="0" :type="number"></cap-input>
+                    <cap-input title="颜色" :value="0" :type="color"></cap-input>
                 </div>
             </div>
         </section>
@@ -165,3 +158,13 @@
     </div>
 </div>
 </template>
+
+<script>
+import Input from '../common/Input.vue';
+
+export default {
+    components: {
+        capInput: Input
+    }
+};
+</script>

@@ -5,12 +5,12 @@
 require('reset-css/reset.css');
 require('./common/base.less');
 
-var Vue = require('vue');
-var Preview = require('./components/Preview.vue');
+let Vue = require('vue');
+let Preview = require('./components/Preview.vue');
 
 new Vue({
     el: 'body',
     components: {
-        preview: Preview
+        Preview
     }
 });
