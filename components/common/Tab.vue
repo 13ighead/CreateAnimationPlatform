@@ -14,14 +14,15 @@
         height: 2px;
         transition: left 0.5s ease-in-out;
     }
-
 }
 </style>
 
 <template>
     <nav class="cap-tab">
         <slot></slot>
-        <div class="cap-tab-highlightline" :style="[lineStyle]"></div>
+        <div class="cap-tab-highlightline"
+            :style="[lineStyle]"
+        ></div>
     </nav>
 </template>
 
@@ -61,16 +62,6 @@ export default {
                 backgroundColor: this.activeColor,
                 width: this.lineWidth
             }
-        },
-        hoverLeft () {
-            return `${this.hoverIndex * (100 / this.tabCount)}%`
-        },
-        hoverStyle () {
-            return {
-                left: this.hoverLeft,
-                backgroundColor: this.activeColor,
-                width: this.lineWidth
-            }
         }
     },
     watch: {
@@ -78,18 +69,16 @@ export default {
             this.$broadcast('b_change_index', val)
         }
     },
+    methods: {
+    },
     events: {
         'd_change_index' (index) {
             this.index = index
-        },
-        'd_hover_index' (index) {
-            this.hoverIndex = index
         }
     },
     data () {
         return {
-            index: -1,
-            hoverIndex: 0
+            index: -1
         }
     }
 }

@@ -18,8 +18,7 @@
     <a class="cap-tab-item" href="javascript:void(0);"
         :class="{'cap-tab-item-selected':selected}"
         :style="style"
-        @click="tabClick"
-        @mouseover="tabHover">
+        @click="tabClick">
         <slot></slot>
     </a>
 </template>
@@ -36,6 +35,16 @@ export default {
             type: Boolean,
             required: false,
             default: false
+        },
+        activeColor: {
+            type: String,
+            required: false,
+            default: '#03a9f4'
+        },
+        defaultColor: {
+            type: String,
+            required: false,
+            default: '#000'
         }
     },
     watch: {
@@ -48,9 +57,6 @@ export default {
     methods: {
         tabClick () {
             this.$dispatch('d_change_index', this.index)
-        },
-        tabHover () {
-            this.$dispatch('d_hover_index', this.index)
         }
     },
     events: {
@@ -66,7 +72,8 @@ export default {
     computed: {
         style () {
             return {
-                backgroundColor: this.selected ? '#ddd': ''
+                backgroundColor: this.selected ? '#ddd': '',
+                color: this.selected ? this.activeColor : this.defaultColor
             }
         }
     }
