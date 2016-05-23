@@ -19,7 +19,14 @@
 
 <template>
     <nav class="cap-tab">
-        <slot></slot>
+        <cap-tab-item
+            v-for="item in items"
+            :index="$index"
+            :active-color="activeColor"
+            :default-color="defaultColor"
+        >
+            {{item.title}}
+        </cap-tab-item>
         <div class="cap-tab-highlightline"
             :style="[lineStyle]"
         ></div>
@@ -27,6 +34,8 @@
 </template>
 
 <script>
+import CapTabItem from './Tab-item.vue'
+
 export default {
     name: 'CapTab',
     ready () {
@@ -37,12 +46,12 @@ export default {
     },
     props: {
         activeColor: {
-            type: String,
+            type: null,
             required: false,
-            default: '#03a9f4'
+            default: '#0ef'
         },
         defaultColor: {
-            type: String,
+            type: null,
             required: false,
             default: '#000'
         },
@@ -50,6 +59,9 @@ export default {
             type: Number,
             required: false,
             default: 0
+        },
+        items: {
+            type: Array
         }
     },
     computed: {
@@ -67,7 +79,11 @@ export default {
     watch: {
         index (val) {
             this.$broadcast('b_change_index', val)
+            this.$dispatch('d_change_index', val)
         }
+    },
+    components: {
+        CapTabItem
     },
     methods: {
     },

@@ -37,12 +37,12 @@ export default {
             default: false
         },
         activeColor: {
-            type: String,
+            type: null,
             required: false,
-            default: '#03a9f4'
+            default: '#0ef'
         },
         defaultColor: {
-            type: String,
+            type: null,
             required: false,
             default: '#000'
         }
