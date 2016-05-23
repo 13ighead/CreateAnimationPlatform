@@ -103,13 +103,14 @@ cap-inspector {
 <template>
     <cap-inspector>
         <header class="cap-inspector-header">
-            <cap-tab :default-index=0>
-                <cap-tab-item v-for="item in items" :index="$index">{{item.title}}</cap-tab-item>
+            <cap-tab
+                :default-index=0
+                active-color="#0cf"
+                :items="items"
+            >
             </cap-tab>
         </header>
-        <measure></measure>
-        <element></element>
-        <typesetting></typesetting>
+        <component :is="currentView"></component>
         <aside class="cap-inspector-handle">
             <i class="icon"></i>
         </aside>
@@ -117,35 +118,43 @@ cap-inspector {
 </template>
 
 <script>
-import Measure from './inspector/Measure.vue';
-import Element from './inspector/Element.vue';
-import Typesetting from './inspector/Typesetting.vue';
-import CapTab from './common/Tab.vue';
-import CapTabItem from './common/Tab-item.vue';
+import Measure from './inspector/Measure.vue'
+import Element from './inspector/Element.vue'
+import Typesetting from './inspector/Typesetting.vue'
+import CapTab from './common/Tab.vue'
+
 
 export default {
     components: {
         Measure,
         Element,
         Typesetting,
-        CapTab,
-        CapTabItem
+        CapTab
+    },
+    events: {
+        'd_change_index' (val) {
+            this.currentView = this.items[val].name
+        }
     },
     data () {
         return {
             items: [
                 {
-                    title: "布局"
+                    title: "布局",
+                    name: "Measure"
                 },
                 {
-                    title: "效果"
+                    title: "效果",
+                    name: "Element"
                 },
                 {
-                    title: "排版"
+                    title: "排版",
+                    name: "Typesetting"
                 }
-            ]
+            ],
+            currentView: "Measure"
         }
     }
-};
+}
 
 </script>

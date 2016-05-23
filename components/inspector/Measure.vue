@@ -2,7 +2,7 @@
 </style>
 
 <template>
-<div class="cap-inspector-panel measure" data-inspector-type="measure" style="display: none;">
+<div class="cap-inspector-panel measure" data-inspector-type="measure">
     <header class="cap-inspector-panel-header cap-border-bottom">
         <h3 class="cap-inspector-panel-header-title">布局</h3>
     </header>
