@@ -39,7 +39,7 @@ export default {
         activeColor: {
             type: null,
             required: false,
-            default: '#0ef'
+            default: '#03a9f4'
         },
         defaultColor: {
             type: null,
@@ -60,7 +60,7 @@ export default {
         }
     },
     events: {
-        'b_change_index' (val) {
+        b_change_index (val) {
             if (this.index === val) {
                 this.selected = true;
             }

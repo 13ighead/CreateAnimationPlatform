@@ -48,7 +48,7 @@ export default {
         activeColor: {
             type: null,
             required: false,
-            default: '#0ef'
+            default: '#03a9f4'
         },
         defaultColor: {
             type: null,
@@ -88,7 +88,7 @@ export default {
     methods: {
     },
     events: {
-        'd_change_index' (index) {
+        d_change_index (index) {
             this.index = index
         }
     },

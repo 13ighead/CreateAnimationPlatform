@@ -105,7 +105,7 @@ cap-inspector {
         <header class="cap-inspector-header">
             <cap-tab
                 :default-index=0
-                active-color="#0cf"
+                active-color="#03a9f4"
                 :items="items"
             >
             </cap-tab>
@@ -132,7 +132,7 @@ export default {
         CapTab
     },
     events: {
-        'd_change_index' (val) {
+        d_change_index (val) {
             this.currentView = this.items[val].name
         }
     },
