@@ -105,7 +105,8 @@ cap-inspector {
         <header class="cap-inspector-header">
             <cap-tab
                 :default-index=0
-                active-color="#03a9f4"
+                active-color="#2196F3"
+                line-color="#2196F3"
                 :items="items"
             >
             </cap-tab>

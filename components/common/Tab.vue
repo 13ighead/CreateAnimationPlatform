@@ -48,12 +48,17 @@ export default {
         activeColor: {
             type: null,
             required: false,
-            default: '#03a9f4'
+            default: '#fff'
         },
         defaultColor: {
             type: null,
             required: false,
             default: '#000'
+        },
+        lineColor: {
+            type: null,
+            required: false,
+            default: '#03a9f4'
         },
         defaultIndex: {
             type: Number,
@@ -71,7 +76,7 @@ export default {
         lineStyle () {
             return {
                 left: this.lineLeft,
-                backgroundColor: this.activeColor,
+                backgroundColor: this.lineColor,
                 width: this.lineWidth
             }
         }
