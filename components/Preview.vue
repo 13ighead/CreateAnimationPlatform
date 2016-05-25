@@ -33,13 +33,15 @@ cap-preview {
 </template>
 
 <script>
-import Scene from './Scene.vue';
-import Inspector from './Inspector.vue';
+import Scene from './Scene.vue'
+import Inspector from './Inspector.vue'
+import store from '../models/store'
 
 export default {
     components: {
         Scene,
         Inspector
-    }
-};
+    },
+    store
+}
 </script>

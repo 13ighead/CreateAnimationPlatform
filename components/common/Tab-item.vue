@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { incrementCounter } from '../../models/actions'
 export default {
     name: 'CapTabItem',
     props: {
@@ -47,13 +48,6 @@ export default {
             default: '#000'
         }
     },
-    watch: {
-        selected (val) {
-            if (val) {
-                this.tabClick()
-            }
-        }
-    },
     methods: {
         tabClick () {
             this.$dispatch('d_change_index', this.index)
@@ -75,6 +69,11 @@ export default {
                 backgroundColor: this.selected ? '#ddd': '',
                 color: this.selected ? this.activeColor : this.defaultColor
             }
+        }
+    },
+    vuex: {
+        actions: {
+            tabClick: incrementCounter
         }
     }
 }
