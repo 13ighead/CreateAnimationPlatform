@@ -18,7 +18,7 @@ cap-scene {
 </template>
 
 <script>
-import { getCount } from '../models/getters'
+import { getCount } from '../models/getters';
 
 export default {
     vuex: {
@@ -26,5 +26,5 @@ export default {
             counter: getCount
         }
     }
-}
+};
 </script>

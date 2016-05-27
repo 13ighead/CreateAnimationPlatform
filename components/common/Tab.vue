@@ -34,15 +34,15 @@
 </template>
 
 <script>
-import CapTabItem from './Tab-item.vue'
+import CapTabItem from './Tab-item.vue';
 
 export default {
     name: 'CapTab',
     ready () {
-        const tabList = this.$el.querySelectorAll('.cap-tab-item')
-        this.tabCount = tabList.length
-        this.lineWidth = `${100 / this.tabCount}%`
-        this.index = this.defaultIndex
+        const tabList = this.$el.querySelectorAll('.cap-tab-item');
+        this.tabCount = tabList.length;
+        this.lineWidth = `${100 / this.tabCount}%`;
+        this.index = this.defaultIndex;
     },
     props: {
         activeColor: {
@@ -71,20 +71,20 @@ export default {
     },
     computed: {
         lineLeft () {
-            return `${this.index * (100 / this.tabCount)}%`
+            return `${this.index * (100 / this.tabCount)}%`;
         },
         lineStyle () {
             return {
                 left: this.lineLeft,
                 backgroundColor: this.lineColor,
                 width: this.lineWidth
-            }
+            };
         }
     },
     watch: {
         index (val) {
-            this.$broadcast('b_change_index', val)
-            this.$dispatch('d_change_index', val)
+            this.$broadcast('b_change_index', val);
+            this.$dispatch('d_change_index', val);
         }
     },
     components: {
@@ -94,13 +94,13 @@ export default {
     },
     events: {
         d_change_index (index) {
-            this.index = index
+            this.index = index;
         }
     },
     data () {
         return {
             index: -1
-        }
+        };
     }
-}
+};
 </script>

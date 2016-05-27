@@ -17,6 +17,7 @@
                         title="左"
                         value="0"
                         type="number"
+                        :options="[{title: '%', value: 0}, {title: 'px', value: 1}]"
                     ></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">

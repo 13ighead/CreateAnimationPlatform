@@ -119,10 +119,10 @@ cap-inspector {
 </template>
 
 <script>
-import Measure from './inspector/Measure.vue'
-import Element from './inspector/Element.vue'
-import Typesetting from './inspector/Typesetting.vue'
-import CapTab from './common/Tab.vue'
+import Measure from './inspector/Measure.vue';
+import Element from './inspector/Element.vue';
+import Typesetting from './inspector/Typesetting.vue';
+import CapTab from './common/Tab.vue';
 
 
 export default {
@@ -134,7 +134,7 @@ export default {
     },
     events: {
         d_change_index (val) {
-            this.currentView = this.items[val].name
+            this.currentView = this.items[val].name;
         }
     },
     data () {
@@ -156,6 +156,6 @@ export default {
             currentView: "Measure"
         }
     }
-}
+};
 
 </script>

@@ -11,6 +11,13 @@
         v-model="value"
         @blur="blur"
     >
+    <select v-if="options && options.length > 0">
+        <option v-for="item in options"
+            :value="item.value">
+            {{ item.title }}
+        </option>
+    </select>
+    <span v-if="otherText" class="cap-inspector-text">{{ otherText }}</span>
 </template>
 
 <script>
@@ -39,12 +46,17 @@ export default {
             type: Boolean,
             required: false,
             default: false
+        },
+        options: {
+            type: Array,
+            required: false,
+            default: () => []
         }
     },
     methods: {
         blur () {
-            
+
         }
     }
-}
+};
 </script>

@@ -1,3 +1,3 @@
 export const incrementCounter = ({dispatch, state}) => {
-    dispatch('INCREMENT', 1)
-}
+    dispatch('INCREMENT', 1);
+};
