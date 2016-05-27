@@ -11,7 +11,10 @@
         v-model="value"
         @blur="blur"
     >
-    <select v-if="options && options.length > 0">
+    <span v-show="optionsReadonly">
+
+    </span>
+    <select v-show="!optionsReadonly" v-if="options && options.length > 0">
         <option v-for="item in options"
             :value="item.value">
             {{ item.title }}
@@ -51,6 +54,11 @@ export default {
             type: Array,
             required: false,
             default: () => []
+        },
+        optionsReadonly: {
+            type: Boolean,
+            reqiured: false,
+            default: false
         }
     },
     methods: {

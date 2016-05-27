@@ -17,7 +17,7 @@
                         title="左"
                         value="0"
                         type="number"
-                        :options="[{title: '%', value: 0}, {title: 'px', value: 1}]"
+                        :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
@@ -25,6 +25,7 @@
                         title="上"
                         value="0"
                         type="number"
+                        :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
             </div>
@@ -39,6 +40,7 @@
                         title="宽度"
                         value="0"
                         type="number"
+                        :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
@@ -46,6 +48,7 @@
                         title="高度"
                         value="0"
                         type="number"
+                        :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
             </div>
@@ -66,6 +69,7 @@
                         title="宽度"
                         value="0"
                         type="number"
+                        :options="[{title: '%', value: 1}]"
                     ></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
@@ -73,6 +77,7 @@
                         title="高度"
                         value="0"
                         type="number"
+                        :options="[{title: '%', value: 1}]"
                     ></cap-input>
                 </div>
             </div>
@@ -93,6 +98,7 @@
                         title="x轴"
                         value="0"
                         type="number"
+                        :options="[{title: '°', value: 2}]"
                     ></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
@@ -100,6 +106,7 @@
                         title="y轴"
                         value="0"
                         type="number"
+                        :options="[{title: '°', value: 2}]"
                     ></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
@@ -107,6 +114,7 @@
                         title="z轴"
                         value="0"
                         type="number"
+                        :options="[{title: '°', value: 2}]"
                     ></cap-input>
                 </div>
             </div>
@@ -117,20 +125,21 @@
             </header>
             <div class="cap-inspector-panel-row">
                 <div class="cap-inspector-panel-item cap-inspector-panel-row">
-                    <label>x偏移量</label>
-                    <input type="number" value=50>
-                    <select name="" id="">
-                        <option value="">%</option>
-                        <option value="">px</option>
-                    </select>
+                    <cap-input
+                        title="x偏移量"
+                        value="0"
+                        type="number"
+                        :options="[{title: 'px', value: 0}, {title: '%', value: 1}]"
+                    ></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item cap-inspector-panel-row">
-                    <label>y偏移量</label>
-                    <input type="number" value=50>
-                    <select name="" id="">
-                        <option value="">%</option>
-                        <option value="">px</option>
-                    </select>
+                    <cap-input
+                        title="x偏移量"
+                        value="0"
+                        type="number"
+                        :options-readonly=true
+                        :options="[{title: 'px', value: 0}, {title: '%', value: 1}]"
+                    ></cap-input>
                 </div>
             </div>
         </section>
