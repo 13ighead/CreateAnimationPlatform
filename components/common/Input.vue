@@ -12,7 +12,7 @@
         @blur="blur"
     >
     <span v-show="optionsReadonly">
-
+        {{ opstionsDefaultTitle }}
     </span>
     <select v-show="!optionsReadonly" v-if="options && options.length > 0">
         <option v-for="item in options"
@@ -59,6 +59,26 @@ export default {
             type: Boolean,
             reqiured: false,
             default: false
+        },
+        optionsDefaultValue: {
+            type: Number,
+            required: false,
+            default: 0
+        }
+    },
+    computed: {
+        opstionsDefaultTitle () {
+            if (!Array.isArray(this.options)) {
+                return '';
+            }
+
+            for (let {title, value} of this.options) {
+                if (value === this.optionsDefaultValue) {
+                    return title;
+                }
+            }
+
+            return '';
         }
     },
     methods: {

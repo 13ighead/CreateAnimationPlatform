@@ -17,6 +17,8 @@
                         title="左"
                         value="0"
                         type="number"
+                        :options-readonly=true
+                        :options-default-value=0
                         :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
@@ -25,6 +27,8 @@
                         title="上"
                         value="0"
                         type="number"
+                        :options-readonly=true
+                        :options-default-value=0
                         :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
@@ -40,6 +44,8 @@
                         title="宽度"
                         value="0"
                         type="number"
+                        :options-readonly=true
+                        :options-default-value=0
                         :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
@@ -48,6 +54,8 @@
                         title="高度"
                         value="0"
                         type="number"
+                        :options-readonly=true
+                        :options-default-value=0
                         :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
@@ -69,6 +77,8 @@
                         title="宽度"
                         value="0"
                         type="number"
+                        :options-readonly=true
+                        :options-default-value=1
                         :options="[{title: '%', value: 1}]"
                     ></cap-input>
                 </div>
@@ -77,6 +87,8 @@
                         title="高度"
                         value="0"
                         type="number"
+                        :options-readonly=true
+                        :options-default-value=1
                         :options="[{title: '%', value: 1}]"
                     ></cap-input>
                 </div>
@@ -98,6 +110,8 @@
                         title="x轴"
                         value="0"
                         type="number"
+                        :options-readonly=true
+                        :options-default-value=2
                         :options="[{title: '°', value: 2}]"
                     ></cap-input>
                 </div>
@@ -106,6 +120,8 @@
                         title="y轴"
                         value="0"
                         type="number"
+                        :options-readonly=true
+                        :options-default-value=2
                         :options="[{title: '°', value: 2}]"
                     ></cap-input>
                 </div>
@@ -114,6 +130,8 @@
                         title="z轴"
                         value="0"
                         type="number"
+                        :options-readonly=true
+                        :options-default-value=2
                         :options="[{title: '°', value: 2}]"
                     ></cap-input>
                 </div>
@@ -129,6 +147,8 @@
                         title="x偏移量"
                         value="0"
                         type="number"
+                        :options-readonly=true
+                        :options-default-value=0
                         :options="[{title: 'px', value: 0}, {title: '%', value: 1}]"
                     ></cap-input>
                 </div>
@@ -138,6 +158,7 @@
                         value="0"
                         type="number"
                         :options-readonly=true
+                        :options-default-value=0
                         :options="[{title: 'px', value: 0}, {title: '%', value: 1}]"
                     ></cap-input>
                 </div>

@@ -94,11 +94,29 @@
             </header>
             <div>
                 <div class="cap-inspector-panel-item">
-                    <cap-input title="x" :value="0" :type="number"></cap-input>
-                    <cap-input title="y" :value="0" :type="number"></cap-input>
+                    <cap-input
+                        title="x"
+                        value="0"
+                        type="number"
+                        :options-readonly=true
+                        :options-default-value=0
+                        :options="[{title: 'px', value: 0}]"
+                    ></cap-input>
+                </div>
+                <div class="cap-inspector-panel-item">
+                    <cap-input
+                        title="y"
+                        value="0"
+                        type="number"
+                        :options-readonly=true
+                        :options-default-value=0
+                        :options="[{title: 'px', value: 0}]"
+                    ></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
                     <cap-input title="模糊度" :value="0" :type="number"></cap-input>
+                </div>
+                <div class="cap-inspector-panel-item">
                     <cap-input title="颜色" :value="0" :type="color"></cap-input>
                 </div>
             </div>

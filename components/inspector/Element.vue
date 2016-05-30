@@ -28,10 +28,24 @@
             <div class="cap-inspector-panel-row">
 
                 <div class="cap-inspector-panel-item">
-                    <cap-input title="宽度" :value="0" :type="number"></cap-input>
+                    <cap-input
+                        title="宽度"
+                        value="0"
+                        type="number"
+                        :options-readonly=true
+                        :options-default-value=0
+                        :options="[{title: 'px', value: 0}]"
+                    ></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
-                    <cap-input title="半径" :value="0" :type="number"></cap-input>
+                    <cap-input
+                        title="半径"
+                        value="0"
+                        type="number"
+                        :options-readonly=true
+                        :options-default-value=0
+                        :options="[{title: 'px', value: 0}]"
+                    ></cap-input>
                 </div>
             </div>
             <div class="cap-inspector-panel-row">
@@ -50,7 +64,14 @@
                     </select>
                 </div>
                 <div class="cap-inspector-panel-item" style="display:none;">
-                    <cap-input title="补白" :value="0" :type="number"></cap-input>
+                    <cap-input
+                        title="补白"
+                        value="0"
+                        type="number"
+                        :options-readonly=true
+                        :options-default-value=0
+                        :options="[{title: 'px', value: 0}]"
+                    ></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
                     <cap-input title="颜色" :value="0" :type="color"></cap-input>
@@ -82,11 +103,36 @@
             </header>
             <div>
                 <div class="cap-inspector-panel-item">
-                    <cap-input title="x" :value="0" :type="number"></cap-input>
-                    <cap-input title="y" :value="0" :type="number"></cap-input>
+                    <cap-input
+                        title="x"
+                        value="0"
+                        type="number"
+                        :options-readonly=true
+                        :options-default-value=0
+                        :options="[{title: 'px', value: 0}]"
+                    ></cap-input>
                 </div>
                 <div class="cap-inspector-panel-item">
-                    <cap-input title="模糊度" :value="0" :type="number"></cap-input>
+                    <cap-input
+                        title="y"
+                        value="0"
+                        type="number"
+                        :options-readonly=true
+                        :options-default-value=0
+                        :options="[{title: 'px', value: 0}]"
+                    ></cap-input>
+                </div>
+                <div class="cap-inspector-panel-item">
+                    <cap-input
+                        title="模糊度"
+                        value="0"
+                        type="number"
+                        :options-readonly=true
+                        :options-default-value=0
+                        :options="[{title: 'px', value: 0}]"
+                    ></cap-input>
+                </div>
+                <div class="cap-inspector-panel-item">
                     <cap-input title="颜色" :value="0" :type="color"></cap-input>
                 </div>
             </div>
