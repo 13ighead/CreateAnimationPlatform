@@ -1,19 +1,26 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import {measureInitialState, measureMutations} from './modules/measure';
+import {elementInitialState, elementMutations} from './modules/element';
+import {typesettingInitialState, typesettingMutations} from './modules/typesetting';
+
 Vue.use(Vuex);
 
 const state = {
-    count: 0
+    measure: measureInitialState,
+    element: elementInitialState,
+    typesetting: typesettingInitialState
 };
 
-const mutations = {
-    INCREMENT (state, amount) {
-        state.count = state.count + amount;
-    }
-};
+const mutations = [
+    measureMutations,
+    elementMutations,
+    typesettingMutations
+];
 
 export default new Vuex.Store({
     state,
-    mutations
+    mutations,
+    strict: process.env.NODE_ENV !== 'production'
 });

@@ -1,3 +1,5 @@
-export const incrementCounter = ({dispatch, state}) => {
-    dispatch('INCREMENT', 1);
-};
+export const incrementCounter = createAction('INCREMENT', 1)
+
+function createAction(type) {
+    return ({dispatch, ...args}) => dispatch(...args);
+}

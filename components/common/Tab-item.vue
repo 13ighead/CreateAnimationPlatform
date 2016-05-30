@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import { incrementCounter } from '../../models/actions';
 export default {
     name: 'CapTabItem',
     props: {

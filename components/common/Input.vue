@@ -9,7 +9,6 @@
         :type="type"
         :readonly="readonly"
         v-model="value"
-        @blur="blur"
     >
     <span v-show="optionsReadonly">
         {{ opstionsDefaultTitle }}
@@ -79,11 +78,6 @@ export default {
             }
 
             return '';
-        }
-    },
-    methods: {
-        blur () {
-
         }
     }
 };
