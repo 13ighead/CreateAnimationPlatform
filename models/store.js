@@ -13,11 +13,11 @@ const state = {
     typesetting: typesettingInitialState
 };
 
-const mutations = [
+const mutations = Object.assign({},
     measureMutations,
     elementMutations,
     typesettingMutations
-];
+);
 
 export default new Vuex.Store({
     state,
