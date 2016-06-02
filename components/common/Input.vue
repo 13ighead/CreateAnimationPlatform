@@ -10,12 +10,18 @@
         :readonly="readonly"
         v-model="value"
     >
-    <span v-show="optionsReadonly">
-        {{ opstionsDefaultTitle }}
+    <span v-if="optionsReadonly">
+        {{ opstionsTitle }}
     </span>
-    <select v-show="!optionsReadonly" v-if="options && options.length > 0">
+    <select
+        v-else="!optionsReadonly"
+        v-if="options && options.length > 0"
+        v-model="selected"
+    >
         <option v-for="item in options"
-            :value="item.value">
+            :value="item.value"
+            :selected="item.value===optionsValue"
+        >
             {{ item.title }}
         </option>
     </select>
@@ -59,25 +65,30 @@ export default {
             reqiured: false,
             default: false
         },
-        optionsDefaultValue: {
+        optionsValue: {
             type: Number,
             required: false,
             default: 0
         }
     },
     computed: {
-        opstionsDefaultTitle () {
+        opstionsTitle () {
             if (!Array.isArray(this.options)) {
                 return '';
             }
 
             for (let {title, value} of this.options) {
-                if (value === this.optionsDefaultValue) {
+                if (value === this.optionsValue) {
                     return title;
                 }
             }
 
             return '';
+        }
+    },
+    data () {
+        return {
+            selected: this.selected
         }
     }
 };
