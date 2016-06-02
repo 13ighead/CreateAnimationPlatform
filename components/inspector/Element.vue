@@ -33,7 +33,7 @@
                         value="0"
                         type="number"
                         :options-readonly=true
-                        :options-default-value=0
+                        :options-value=0
                         :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
@@ -43,7 +43,7 @@
                         value="0"
                         type="number"
                         :options-readonly=true
-                        :options-default-value=0
+                        :options-value=0
                         :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
@@ -69,7 +69,7 @@
                         value="0"
                         type="number"
                         :options-readonly=true
-                        :options-default-value=0
+                        :options-value=0
                         :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
@@ -108,7 +108,7 @@
                         value="0"
                         type="number"
                         :options-readonly=true
-                        :options-default-value=0
+                        :options-value=0
                         :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
@@ -118,7 +118,7 @@
                         value="0"
                         type="number"
                         :options-readonly=true
-                        :options-default-value=0
+                        :options-value=0
                         :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
@@ -128,7 +128,7 @@
                         value="0"
                         type="number"
                         :options-readonly=true
-                        :options-default-value=0
+                        :options-value=0
                         :options="[{title: 'px', value: 0}]"
                     ></cap-input>
                 </div>
