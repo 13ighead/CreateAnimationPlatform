@@ -3,6 +3,8 @@
  * @author Bighead
  */
 
+export const SET_CLID = 'SET_CLID';
+
 export const SET_MEASURE_X = 'SET_MEASURE_X';
 export const SET_MEASURE_Y = 'SET_MEASURE_Y';
 export const SET_MEASURE_WIDTH = 'SET_MEASURE_WIDTH';
