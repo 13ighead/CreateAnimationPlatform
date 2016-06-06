@@ -2,30 +2,30 @@
 </style>
 
 <template id='Input'>
-    <label class="cap-inspector-label">
+    <label class='cap-inspector-label'>
         {{title}}
     </label>
-    <input class="cap-inspector-input"
-        :type="type"
-        :readonly="readonly"
-        v-model="value"
+    <input class='cap-inspector-input'
+        :type='type'
+        :readonly='readonly'
+        v-model='value'
     >
-    <span v-if="optionsReadonly">
+    <span v-if='optionsReadonly'>
         {{ opstionsTitle }}
     </span>
     <select
-        v-else="!optionsReadonly"
-        v-if="options && options.length > 0"
-        v-model="selected"
+        v-else='!optionsReadonly'
+        v-if='options && options.length > 0'
+        v-model='selected'
     >
-        <option v-for="item in options"
-            :value="item.value"
-            :selected="item.value===optionsValue"
+        <option v-for='item in options'
+            :value='item.value'
+            :selected='item.value===optionsValue'
         >
             {{ item.title }}
         </option>
     </select>
-    <span v-if="otherText" class="cap-inspector-text">{{ otherText }}</span>
+    <span v-if='otherText' class='cap-inspector-text'>{{ otherText }}</span>
 </template>
 
 <script>

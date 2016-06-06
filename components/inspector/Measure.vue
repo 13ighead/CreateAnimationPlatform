@@ -1,173 +1,173 @@
-<style scoped lang='less'>
+<style scoped lang="less">
 </style>
 
 <template>
-<div class="cap-inspector-panel measure" data-inspector-type="measure">
-    <header class="cap-inspector-panel-header cap-border-bottom">
-        <h3 class="cap-inspector-panel-header-title">布局</h3>
+<div class='cap-inspector-panel measure' data-inspector-type='measure'>
+    <header class='cap-inspector-panel-header cap-border-bottom'>
+        <h3 class='cap-inspector-panel-header-title'>布局</h3>
     </header>
-    <div class="cap-inspector-panel-inner">
-        <section class="cap-inspector-panel-section cap-border-bottom">
+    <div class='cap-inspector-panel-inner'>
+        <section class='cap-inspector-panel-section cap-border-bottom'>
             <header>
                 <h4>位置</h4>
             </header>
-            <div class="cap-inspector-panel-row">
-                <div class="cap-inspector-panel-item">
+            <div class='cap-inspector-panel-row'>
+                <div class='cap-inspector-panel-item'>
                     <cap-input
-                        title="左"
-                        :value.sync="x"
-                        type="number"
+                        title='左'
+                        :value.sync='x'
+                        type='number'
                         :options-readonly=true
                         :options-value=0
-                        :options="[{title: 'px', value: 0},{title: 'px1', value: 1}]"
+                        :options='[{title: "px", value: 0},{title: "px1", value: 1}]'
                     ></cap-input>
                 </div>
-                <div class="cap-inspector-panel-item">
+                <div class='cap-inspector-panel-item'>
                     <cap-input
-                        title="上"
-                        :value.sync="y"
-                        type="number"
+                        title='上'
+                        :value.sync='y'
+                        type='number'
                         :options-readonly=true
                         :options-value=0
-                        :options="[{title: 'px', value: 0}]"
+                        :options='[{title: "px", value: 0}]'
                     ></cap-input>
                 </div>
             </div>
         </section>
-        <section class="cap-inspector-panel-section cap-border-bottom">
+        <section class='cap-inspector-panel-section cap-border-bottom'>
             <header>
                 <h4>尺寸</h4>
             </header>
-            <div class="cap-inspector-panel-row">
-                <div class="cap-inspector-panel-item">
+            <div class='cap-inspector-panel-row'>
+                <div class='cap-inspector-panel-item'>
                     <cap-input
-                        title="宽度"
-                        :value.sync="width"
-                        type="number"
+                        title='宽度'
+                        :value.sync='width'
+                        type='number'
                         :options-readonly=true
                         :options-value=0
-                        :options="[{title: 'px', value: 0}]"
+                        :options='[{title: "px", value: 0}]'
                     ></cap-input>
                 </div>
-                <div class="cap-inspector-panel-item">
+                <div class='cap-inspector-panel-item'>
                     <cap-input
-                        title="高度"
-                        :value.sync="height"
-                        type="number"
+                        title='高度'
+                        :value.sync='height'
+                        type='number'
                         :options-readonly=true
                         :options-value=0
-                        :options="[{title: 'px', value: 0}]"
+                        :options='[{title: "px", value: 0}]'
                     ></cap-input>
                 </div>
             </div>
-            <div class="cap-inspector-panel-row">
-                <div class="cap-inspector-panel-item">
+            <div class='cap-inspector-panel-row'>
+                <div class='cap-inspector-panel-item'>
                     <label>限制比例</label>
-                    <input type="checkbox">
+                    <input type='checkbox'>
                 </div>
             </div>
         </section>
-        <section class="cap-inspector-panel-section cap-border-bottom">
+        <section class='cap-inspector-panel-section cap-border-bottom'>
             <header>
                 <h4>缩放</h4>
             </header>
-            <div class="cap-inspector-panel-row">
-                <div class="cap-inspector-panel-item">
+            <div class='cap-inspector-panel-row'>
+                <div class='cap-inspector-panel-item'>
                     <cap-input
-                        title="宽度"
-                        :value.sync="scaleX"
-                        type="number"
+                        title='宽度'
+                        :value.sync='scaleX'
+                        type='number'
                     ></cap-input>
                 </div>
-                <div class="cap-inspector-panel-item">
+                <div class='cap-inspector-panel-item'>
                     <cap-input
-                        title="高度"
-                        :value.sync="scaleY"
-                        type="number"
+                        title='高度'
+                        :value.sync='scaleY'
+                        type='number'
                     ></cap-input>
                 </div>
             </div>
-            <div class="cap-inspector-panel-row">
-                <div class="cap-inspector-panel-item">
+            <div class='cap-inspector-panel-row'>
+                <div class='cap-inspector-panel-item'>
                     <label>限制比例</label>
-                    <input type="checkbox">
+                    <input type='checkbox'>
                 </div>
             </div>
         </section>
-        <section class="cap-inspector-panel-section cap-border-bottom">
+        <section class='cap-inspector-panel-section cap-border-bottom'>
             <header>
                 <h4>旋转</h4>
             </header>
-            <div class="cap-inspector-panel-row">
-                <div class="cap-inspector-panel-item">
+            <div class='cap-inspector-panel-row'>
+                <div class='cap-inspector-panel-item'>
                     <cap-input
-                        title="x轴"
-                        :value.sync="rotateX"
-                        type="number"
+                        title='x轴'
+                        :value.sync='rotateX'
+                        type='number'
                         :options-readonly=true
                         :options-value=2
-                        :options="[{title: '°', value: 2}]"
+                        :options='[{title: "°", value: 2}]'
                     ></cap-input>
                 </div>
-                <div class="cap-inspector-panel-item">
+                <div class='cap-inspector-panel-item'>
                     <cap-input
-                        title="y轴"
-                        :value.sync="rotateY"
-                        type="number"
+                        title='y轴'
+                        :value.sync='rotateY'
+                        type='number'
                         :options-readonly=true
                         :options-value=2
-                        :options="[{title: '°', value: 2}]"
+                        :options='[{title: "°", value: 2}]'
                     ></cap-input>
                 </div>
-                <div class="cap-inspector-panel-item">
+                <div class='cap-inspector-panel-item'>
                     <cap-input
-                        title="z轴"
-                        :value.sync="rotateZ"
-                        type="number"
+                        title='z轴'
+                        :value.sync='rotateZ'
+                        type='number'
                         :options-readonly=true
                         :options-value=2
-                        :options="[{title: '°', value: 2}]"
+                        :options='[{title: "°", value: 2}]'
                     ></cap-input>
                 </div>
             </div>
         </section>
-        <section class="cap-inspector-panel-section cap-border-bottom">
+        <section class='cap-inspector-panel-section cap-border-bottom'>
             <header>
                 <h4>视点</h4>
             </header>
-            <div class="cap-inspector-panel-row">
-                <div class="cap-inspector-panel-item cap-inspector-panel-row">
+            <div class='cap-inspector-panel-row'>
+                <div class='cap-inspector-panel-item cap-inspector-panel-row'>
                     <cap-input
-                        title="视点"
-                        :value.sync="perspective"
-                        type="number"
+                        title='视点'
+                        :value.sync='perspective'
+                        type='number'
                     ></cap-input>
                 </div>
             </div>
         </section>
-        <section class="cap-inspector-panel-section cap-border-bottom">
+        <section class='cap-inspector-panel-section cap-border-bottom'>
             <header>
                 <h4>原点</h4>
             </header>
-            <div class="cap-inspector-panel-row">
-                <div class="cap-inspector-panel-item cap-inspector-panel-row">
+            <div class='cap-inspector-panel-row'>
+                <div class='cap-inspector-panel-item cap-inspector-panel-row'>
                     <cap-input
-                        title="x偏移量"
-                        :value.sync="originX"
-                        type="number"
+                        title='x偏移量'
+                        :value.sync='originX'
+                        type='number'
                         :options-readonly=true
                         :options-value=0
-                        :options="[{title: 'px', value: 0}, {title: '%', value: 1}]"
+                        :options='[{title: "px", value: 0}, {title: "%", value: 1}]'
                     ></cap-input>
                 </div>
-                <div class="cap-inspector-panel-item cap-inspector-panel-row">
+                <div class='cap-inspector-panel-item cap-inspector-panel-row'>
                     <cap-input
-                        title="x偏移量"
-                        :value.sync="originY"
-                        type="number"
+                        title='x偏移量'
+                        :value.sync='originY'
+                        type='number'
                         :options-readonly=true
                         :options-value=0
-                        :options="[{title: 'px', value: 0}, {title: '%', value: 1}]"
+                        :options='[{title: "px", value: 0}, {title: "%", value: 1}]'
                     ></cap-input>
                 </div>
             </div>
@@ -180,6 +180,7 @@
 <script>
 import CapInput from '../common/Input.vue';
 import * as actions from '../../models/actions';
+import { getLayer } from '../../models/getters';
 
 export default {
     ready () {
@@ -292,18 +293,18 @@ export default {
     },
     vuex: {
         getters: {
-            measureX: state => state.measure.x,
-            measureY: state => state.measure.y,
-            measureWidth: state => state.measure.width,
-            measureHeight: state => state.measure.height,
-            measureScaleX: state => state.measure.scale.x,
-            measureScaleY: state => state.measure.scale.y,
-            measureRotateX: state => state.measure.rotate.x,
-            measureRotateY: state => state.measure.rotate.y,
-            measureRotateZ: state => state.measure.rotate.z,
-            measurePerspective: state => state.measure.perspective,
-            measureOriginX: state => state.measure.origin.x,
-            measureOriginY: state => state.measure.origin.y
+            measureX: state => getLayer(state).measure.x,
+            measureY: state => getLayer(state).measure.y,
+            measureWidth: state => getLayer(state).measure.width,
+            measureHeight: state => getLayer(state).measure.height,
+            measureScaleX: state => getLayer(state).measure.scale.x,
+            measureScaleY: state => getLayer(state).measure.scale.y,
+            measureRotateX: state => getLayer(state).measure.rotate.x,
+            measureRotateY: state => getLayer(state).measure.rotate.y,
+            measureRotateZ: state => getLayer(state).measure.rotate.z,
+            measurePerspective: state => getLayer(state).measure.perspective,
+            measureOriginX: state => getLayer(state).measure.origin.x,
+            measureOriginY: state => getLayer(state).measure.origin.y
         },
         actions: {
             setMeasureX: actions.setMeasureX,

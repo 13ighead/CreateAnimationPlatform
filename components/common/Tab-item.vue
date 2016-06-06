@@ -15,10 +15,10 @@
 </style>
 
 <template>
-    <a class="cap-tab-item" href="javascript:void(0);"
-        :class="{'cap-tab-item-selected':selected}"
-        :style="style"
-        @click="tabClick">
+    <a class='cap-tab-item' href='javascript:void(0);'
+        :class='{"cap-tab-item-selected":selected}'
+        :style='style'
+        @click='tabClick'>
         <slot></slot>
     </a>
 </template>

@@ -18,17 +18,17 @@
 </style>
 
 <template>
-    <nav class="cap-tab">
+    <nav class='cap-tab'>
         <cap-tab-item
-            v-for="item in items"
-            :index="$index"
-            :active-color="activeColor"
-            :default-color="defaultColor"
+            v-for='item in items'
+            :index='$index'
+            :active-color='activeColor'
+            :default-color='defaultColor'
         >
             {{item.title}}
         </cap-tab-item>
-        <div class="cap-tab-highlightline"
-            :style="[lineStyle]"
+        <div class='cap-tab-highlightline'
+            :style='[lineStyle]'
         ></div>
     </nav>
 </template>
