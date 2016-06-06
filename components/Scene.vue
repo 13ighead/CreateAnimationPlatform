@@ -14,15 +14,15 @@ cap-scene {
 
 <template>
     <cap-scene class='outer'>
-        <cap-layer
-            :state="state"
+        <cap-layer v-for="layer in state.layers"
+            :layer="layer"
         ></cap-layer>
     </cap-scene>
 </template>
 
 <script>
 import CapLayer from './common/Layer.vue'
-import getState from '../models/getters'
+
 export default {
     components: {
         CapLayer

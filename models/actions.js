@@ -4,6 +4,8 @@
  */
 import * as MUTATION_TYPES from './mutationTypes';
 
+export const setClid = createAction(MUTATION_TYPES.SET_CLID);
+
 // element actions
 
 // measure actions
