@@ -21,13 +21,33 @@ import { getLayer } from '../getters';
 
 export const measureInitialState = [
     {
-        x: 100,
+        x: 0,
         y: 100,
         width: 100,
         height: 100,
         scale: {
             x: 1,
             y: 1
+        },
+        rotate: {
+            x: 0,
+            y: 0,
+            z: 20
+        },
+        origin: {
+            x: 0,
+            y: 0
+        },
+        perspective: 0
+    },
+    {
+        x: 200,
+        y: 0,
+        width: 100,
+        height: 100,
+        scale: {
+            x: .8,
+            y: .8
         },
         rotate: {
             x: 0,
@@ -41,7 +61,7 @@ export const measureInitialState = [
         perspective: 0
     },
     {
-        x: 100,
+        x: 400,
         y: 100,
         width: 100,
         height: 100,
@@ -51,31 +71,11 @@ export const measureInitialState = [
         },
         rotate: {
             x: 0,
-            y: 0,
+            y: 35,
             z: 0
         },
         origin: {
-            x: 0,
-            y: 0
-        },
-        perspective: 0
-    },
-    {
-        x: 100,
-        y: 100,
-        width: 100,
-        height: 100,
-        scale: {
-            x: 1,
-            y: 1
-        },
-        rotate: {
-            x: 0,
-            y: 0,
-            z: 0
-        },
-        origin: {
-            x: 0,
+            x: 50,
             y: 0
         },
         perspective: 0
