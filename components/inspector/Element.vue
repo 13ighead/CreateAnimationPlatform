@@ -2,7 +2,7 @@
 </style>
 
 <template>
-<div class='cap-inspector-panel element' data-inspector-type='element'>
+<cap-inspector-panel class='cap-inspector-panel element' data-inspector-type='element'>
     <header class='cap-inspector-panel-header cap-border-bottom'>
         <h3 class='cap-inspector-panel-header-title'>效果</h3>
     </header>
@@ -202,7 +202,7 @@
             </div>
         </section>
     </div>
-</div>
+</cap-inspector-panel>
 </template>
 
 <script>

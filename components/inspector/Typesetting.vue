@@ -2,7 +2,7 @@
 </style>
 
 <template>
-<div class='cap-inspector-panel typesetting' data-inspector-type='typesetting'>
+<cap-inspector-panel class='cap-inspector-panel typesetting' data-inspector-type='typesetting'>
     <header class='cap-inspector-panel-header cap-border-bottom'>
         <h3 class='cap-inspector-panel-header-title'>排版</h3>
     </header>
@@ -122,7 +122,7 @@
             </div>
         </section>
     </div>
-</div>
+</cap-inspector-panel>
 </template>
 
 <script>
