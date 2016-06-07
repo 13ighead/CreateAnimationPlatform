@@ -1,7 +1,7 @@
 <style scoped lang='less'>
 </style>
 
-<template id='Input'>
+<template>
     <label class='cap-inspector-label'>
         {{title}}
     </label>
