@@ -4,7 +4,7 @@ cap-preview {
     width: 100%;
     height: 100%;
 
-    .cap-scene-container {
+    .cap-scene-outer {
         flex: 1;
         display: flex;
         align-items: center;
@@ -12,7 +12,7 @@ cap-preview {
         z-index: 1;
     }
 
-    .cap-inspector-container {
+    .cap-inspector-outer {
         flex: 0 0 300px;
         z-index: 2;
         height: 100%;
@@ -23,10 +23,10 @@ cap-preview {
 
 <template>
     <cap-preview>
-        <div class="cap-scene-container">
+        <div class="cap-scene-outer">
             <scene></scene>
         </div>
-        <div class="cap-inspector-container">
+        <div class="cap-inspector-outer">
             <inspector></inspector>
         </div>
     </cap-preview>
