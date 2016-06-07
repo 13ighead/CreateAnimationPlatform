@@ -1,9 +1,10 @@
 <style scoped lang='less'>
-    .layer {
+    .cap-layer {
         border: 1px solid black;
         background-color: #eeff00;
         position: absolute;
         user-select: none;
+        cursor: default;
     }
     .origin-style {
         position: absolute;
@@ -26,13 +27,10 @@
 </style>
 
 <template>
-    <cap-layer-container
-        class='layer'
+    <div class='cap-layer'
+        data-draggable="layer"
         :style='style'
-        @click='click'
-        @mousemove='drag'
-        @mousedown='dragStart'
-        @mouseup='dragEnd'>
+        :data-lid="lid">
         <div class='label'>
             lid: {{layer.lid}}
             <br>
@@ -43,12 +41,14 @@
             rotate: {{layer.measure.rotate.x}} {{layer.measure.rotate.y}} {{layer.measure.rotate.z}}
             scale: {{layer.measure.scale.x}} {{layer.measure.scale.y}}
         </div>
+        <cap-control-layer></cap-control-layer>
         <div class='origin-style' :style='originStyle'></div>
-    </cap-layer-container>
+    </div>
 
 </template>
 
 <script>
+import CapControlLayer from './ControlLayer.vue';
 import * as actions from '../../models/actions';
 import { getLayer } from '../../models/getters';
 
@@ -58,6 +58,9 @@ export default {
 
     },
     props: ['layer'],
+    components: {
+        CapControlLayer
+    },
     computed: {
         style () {
             return {
@@ -118,37 +121,9 @@ export default {
 
         }
     },
-    methods: {
-        click () {
-            this.setClid(this.lid);
-        },
-        drag () {
-            if (!this.dragStartFlag) {
-                return;
-            }
-            this.offset = {
-                x: event.clientX - this.dragStartPos.x,
-                y: event.clientY - this.dragStartPos.y
-            }
-            console.log(this.offset);
-            this.x = this.domStartPosition.x + this.offset.x;
-            this.y = this.domStartPosition.y + this.offset.y;
-            console.log(this.x);
-        },
-        dragStart () {
-            this.dragStartFlag = true;
-            this.dragStartPos = {
-                x: event.clientX,
-                y: event.clientY
-            };
-
-            this.domStartPosition = {
-                x: this.x,
-                y: this.y
-            };
-        },
-        dragEnd () {
-            this.dragStartFlag = false;
+    data () {
+        return {
+            lid: this.lid
         }
     }
 }
