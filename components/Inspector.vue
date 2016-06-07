@@ -2,7 +2,7 @@
 @cap-inspector-tab-selectedcolor: #03a9f4;
 @cap-inspector-handle-bgcolor: #ddd;
 
-cap-inspector {
+.cap-inspector {
     position: relative;
     height: 100%;
     display: flex;
@@ -101,7 +101,7 @@ cap-inspector {
 </style>
 
 <template>
-    <cap-inspector>
+    <div class="cap-inspector">
         <header class="cap-inspector-header">
             <cap-tab
                 :default-index=0
@@ -115,7 +115,7 @@ cap-inspector {
         <aside class="cap-inspector-handle">
             <i class="icon"></i>
         </aside>
-    </cap-inspector>
+    </div>
 </template>
 
 <script>
