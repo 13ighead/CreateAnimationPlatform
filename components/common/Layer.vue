@@ -32,7 +32,7 @@
         :style='style'
         :data-lid="lid">
         <div class='label'>
-            lid: {{layer.lid}}
+            lid: {{lid}}
             <br>
             x: {{layer.measure.x}}
             y: {{layer.measure.y}}
@@ -41,7 +41,7 @@
             rotate: {{layer.measure.rotate.x}} {{layer.measure.rotate.y}} {{layer.measure.rotate.z}}
             scale: {{layer.measure.scale.x}} {{layer.measure.scale.y}}
         </div>
-        <cap-control-layer></cap-control-layer>
+        <cap-control-layer v-show="lid == this.clid"></cap-control-layer>
         <div class='origin-style' :style='originStyle'></div>
     </div>
 

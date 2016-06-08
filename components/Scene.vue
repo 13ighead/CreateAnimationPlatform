@@ -46,7 +46,7 @@ export default {
         CapLayer
     },
     computed: {
-        x: {
+        curLayerX: {
             get () {
                 let layers = this.layers;
                 return layers[this.clid].measure.x;
@@ -55,7 +55,7 @@ export default {
                 this.setMeasureX(value);
             }
         },
-        y: {
+        curLayerY: {
             get () {
                 let layers = this.layers;
                 return layers[this.clid].measure.y;
@@ -63,35 +63,44 @@ export default {
             set (value) {
                 this.setMeasureY(value);
             }
+        },
+        curLayerOrigin: {
+            get () {
+                let layers = this.layers;
+                return layers[this.clid].measure.origin;
+            }
         }
     },
     vuex: {
         getters: {
             layers: (state) => state.layers,
-            clid: (state) => state.clid
+            clid: (state) => state.clid,
         },
         actions: {
             setClid: actions.setClid,
             setMeasureX: actions.setMeasureX,
             setMeasureY: actions.setMeasureY
-        },
-        computed: {
-
         }
     },
     methods: {
         drag () {
+            if (!this.dragStartFlag) {
+                return;
+            }
             switch (this.draggableType) {
                 case 'layer':
-                    if (!this.dragStartFlag) {
-                        return;
-                    }
                     this.offset = {
                         x: event.clientX - this.dragStartPos.x,
                         y: event.clientY - this.dragStartPos.y
                     }
-                    this.x = this.domStartPosition.x + this.offset.x;
-                    this.y = this.domStartPosition.y + this.offset.y;
+                    this.curLayerX = this.domStartPosition.x + this.offset.x;
+                    this.curLayerY = this.domStartPosition.y + this.offset.y;
+                    break;
+                case 'anchor':
+                    this.offset = {
+                        x: event.clientX - this.dragStartPos.x,
+                        y: event.clientY - this.dragStartPos.y
+                    }
                     break;
                 default:
                     break;
@@ -101,7 +110,7 @@ export default {
             this.draggableType = event.target.dataset.draggable;
             switch (this.draggableType) {
                 case 'layer':
-                    let clid = event.target.dataset.lid;
+                    var clid = event.target.dataset.lid;
                     clid && this.setClid(clid);
 
                     this.dragStartFlag = true;
@@ -111,10 +120,26 @@ export default {
                     };
 
                     this.domStartPosition = {
-                        x: this.x,
-                        y: this.y
+                        x: this.curLayerX,
+                        y: this.curLayerY
                     };
                     break;
+                case 'anchor':
+                    var clid = this.clid;
+
+                    console.log(this.curLayerOrigin);
+
+                    this.dragStartFlag = true;
+                    this.dragStartPos = {
+                        x: event.clientX,
+                        y: event.clientY
+                    };
+
+                    this.domStartPosition = {
+                        x: this.curLayerX,
+                        y: this.curLayerY
+                    };
+                    break
                 default:
                     break;
             }
