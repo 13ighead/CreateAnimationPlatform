@@ -5,6 +5,8 @@
     align-items: center;
     justify-content: space-around;
     z-index: 1;
+    height: 100%;
+    width: 100%;
 }
 .cap-scene-container {
     position: relative;
