@@ -1,0 +1,18 @@
+/**
+ * @file mutation types
+ * @author Bighead
+ */
+
+export const SET_CLID = 'SET_CLID';
+
+export const SET_MEASURE_X = 'SET_MEASURE_X';
+export const SET_MEASURE_Y = 'SET_MEASURE_Y';
+export const SET_MEASURE_WIDTH = 'SET_MEASURE_WIDTH';
+export const SET_MEASURE_HEIGHT = 'SET_MEASURE_HEIGHT';
+export const SET_MEASURE_SCALE_X = 'SET_MEASURE_SCALE_X';
+export const SET_MEASURE_SCALE_Y = 'SET_MEASURE_SCALE_Y';
+export const SET_MEASURE_ROTATE_X = 'SET_MEASURE_ROTATE_X';
+export const SET_MEASURE_ROTATE_Y = 'SET_MEASURE_ROTATE_Y';
+export const SET_MEASURE_ROTATE_Z = 'SET_MEASURE_ROTATE_Z';
+export const SET_MEASURE_ORIGIN_X = 'SET_MEASURE_ORIGIN_X';
+export const SET_MEASURE_ORIGIN_Y = 'SET_MEASURE_ORIGIN_Y';
