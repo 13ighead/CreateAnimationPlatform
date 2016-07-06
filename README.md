@@ -1,3 +1,2 @@
-#CreateAnimationPlatform
-
-	This is a platform to create animation.
+#CAP - Create Animation Platform
+    This is a platform to create animation
