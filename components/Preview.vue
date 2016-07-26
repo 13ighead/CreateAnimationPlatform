@@ -1,5 +1,5 @@
 <style scoped lang='less'>
-cap-preview {
+.cap-preview {
     display: flex;
     width: 100%;
     height: 100%;
@@ -22,14 +22,14 @@ cap-preview {
 </style>
 
 <template>
-    <cap-preview>
+    <div class="cap-preview">
         <div class="cap-scene-outer">
             <scene></scene>
         </div>
         <div class="cap-inspector-outer">
             <inspector></inspector>
         </div>
-    </cap-preview>
+    </div>
 </template>
 
 <script>

@@ -2,11 +2,11 @@
  * @file main
  * @author Bighead
  */
+import Vue from 'vue';
+import Preview from './components/Preview.vue';
+
 require('reset-css/reset.css');
 require('./common/base.less');
-
-let Vue = require('vue');
-let Preview = require('./components/Preview.vue');
 
 new Vue({
     el: 'body',
