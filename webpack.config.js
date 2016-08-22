@@ -22,8 +22,21 @@ module.exports = {
             {
                 test: /\.less$/i,
                 loader: 'style!css!less'
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                }
             }
         ]
     },
+    devServer: {
+        host: '0.0.0.0',
+        port: 8080
+    },
+    devtool: 'source-map',
     plugins: []
 };

@@ -1,194 +1,164 @@
-<style scoped lang='less'>
-@cap-inspector-bgcolor: #eee;
+<style lang='less'>
 @cap-inspector-tab-selectedcolor: #03a9f4;
 @cap-inspector-handle-bgcolor: #ddd;
 
-.cap-inspector-container {
+.cap-inspector {
+    position: relative;
     height: 100%;
-    background-color: @cap-inspector-bgcolor;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border-left: 1px solid #ddd;
 
-    cap-inspector {
-        position: relative;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        border-left: 1px solid #ddd;
+    .cap-inspector-header {
+        background-color: #fff;
+        width: 100%;
+        height: 40px;
+    }
 
-        .cap-inspector-header {
-            background-color: #fff;
-            width: 100%;
-            height: 40px;
+    .cap-inspector-panel {
+        padding: 12px;
+        overflow: scroll;
 
-            .cap-inspector-nav {
-                position: relative;
-                display: flex;
-                height: 100%;
-                justify-content: space-around;
-                align-items: center;
-                overflow: hidden;
+        .cap-inspector-panel-header {
+            padding: 0 0 8px;
+            font-size: 18px;
 
-                .cap-inspector-tab {
-                    display: inline-block;
-                    height: 100%;
-                    flex: 1;
-                    color: #000;
-                    text-decoration: none;
-                    text-align: center;
+            .cap-inspector-panel-header-title {
+                margin: 0;
+            }
+        }
 
-                    abbr {
+        .cap-inspector-panel-inner {
+
+            .cap-inspector-panel-section {
+                padding: 8px 0;
+
+                header {
+                    padding: 0 0 6px;
+                    font-size: 16px;
+                }
+
+                .cap-inspector-panel-row {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                }
+
+                .cap-inspector-panel-item {
+
+                    label {
+                        font-size: 14px;
+                        line-height: 23px;
+                        height: 23px;
                         display: inline-block;
-                        height: 40px;
-                        line-height: 40px;
                     }
 
-                    &:hover {
-                        background-color: #ddd;
-                    }
-                }
-
-                .cap-inspector-tab-selected {
-                    background-color: #eee;
-                }
-
-                .cap-inspector-tab-highlightline {
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                    height: 2px;
-                    width: 33.33333333%;
-                    background-color: @cap-inspector-tab-selectedcolor;
-                    transition: left 0.5s ease-in-out;
-                }
-
-                .measure:hover ~ .cap-inspector-tab-highlightline {
-                    left: 0;
-                }
-
-                .element:hover ~ .cap-inspector-tab-highlightline {
-                    left: 33.33333333%;
-                }
-
-                .typesetting:hover ~ .cap-inspector-tab-highlightline {
-                    left: 66.66666666%;
-                }
-            }
-        }
-
-        .cap-inspector-panel {
-            padding: 12px;
-            overflow: scroll;
-
-            .cap-inspector-panel-header {
-                padding: 0 0 8px;
-                font-size: 18px;
-            }
-
-            .cap-inspector-panel-inner {
-
-                .cap-inspector-panel-section {
-                    padding: 8px 0;
-
-                    header {
-                        padding: 0 0 6px;
-                        font-size: 16px;
-                    }
-
-                    .cap-inspector-panel-row {
-                        display: flex;
-                        justify-content: space-around;
-                        align-items: center;
-                    }
-
-                    .cap-inspector-panel-item {
-
-                        label {
-                            font-size: 14px;
-                            line-height: 23px;
-                            height: 23px;
-                            display: inline-block;
-                        }
-
-                        input[type="number"] {
-                            width: 40px;
-                        }
+                    input[type="number"] {
+                        width: 40px;
                     }
                 }
             }
         }
+    }
 
-        .cap-inspector-handle {
+    .cap-inspector-handle {
+        position: absolute;
+        top: 50%;
+        left: -10px;
+        transform: translate(0, -50%);
+        width: 10px;
+        height: 20%;
+        background-color: @cap-inspector-handle-bgcolor;
+
+        &::before,
+        &::after {
             position: absolute;
-            top: 50%;
-            left: -10px;
-            transform: translate(0, -50%);
+            display: block;
+            content: '';
+            border: 5px solid @cap-inspector-handle-bgcolor;
+            border-left: 5px solid transparent;
+        }
+
+        &::before {
+            top: -10px;
+            border-top: 5px solid transparent;
+        }
+
+        &::after {
+            bottom: -10px;
+            border-bottom: 5px solid transparent;
+        }
+
+        .icon {
+            display: inline-block;
             width: 10px;
-            height: 20%;
-            background-color: @cap-inspector-handle-bgcolor;
-
-            &::before,
-            &::after {
-                position: absolute;
-                display: block;
-                content: '';
-                border: 5px solid @cap-inspector-handle-bgcolor;
-                border-left: 5px solid transparent;
-            }
-
-            &::before {
-                top: -10px;
-                border-top: 5px solid transparent;
-            }
-
-            &::after {
-                bottom: -10px;
-                border-bottom: 5px solid transparent;
-            }
-
-            .icon {
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-                left: 50%;
-                top: 50%;
-                position: absolute;
-                transform: translate(-50%, -50%) rotate(90deg);
-                background: url('~/img/option.svg') center/cover no-repeat;
-            }
+            height: 10px;
+            left: 50%;
+            top: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%) rotate(90deg);
+            background: url('~/img/option.svg') center/cover no-repeat;
         }
     }
 }
 </style>
 
 <template>
-    <cap-inspector>
+    <div class="cap-inspector">
         <header class="cap-inspector-header">
-            <nav class="cap-inspector-nav">
-                <a data-inspector-tab-type="measure" href="javascript:void(0);" class="cap-inspector-tab cap-inspector-tab-selected measure"><abbr title="Measure">布局</abbr></a>
-                <a data-inspector-tab-type="element" href="javascript:void(0);" class="cap-inspector-tab element"><abbr title="Element">效果</abbr></a>
-                <a data-inspector-tab-type="typesetting" href="javascript:void(0);" class="cap-inspector-tab typesetting"><abbr title="Typesetting">排版</abbr></a>
-                <div class="cap-inspector-tab-highlightline"></div>
-            </nav>
+            <cap-tab
+                :default-index=0
+                active-color="#2196F3"
+                line-color="#2196F3"
+                :items="items"
+            >
+            </cap-tab>
         </header>
-        <measure></measure>
-        <element></element>
-        <typesetting></typesetting>
+        <component :is="currentView"></component>
         <aside class="cap-inspector-handle">
             <i class="icon"></i>
         </aside>
-    </cap-inspector>
+    </div>
 </template>
 
 <script>
 import Measure from './inspector/Measure.vue';
 import Element from './inspector/Element.vue';
 import Typesetting from './inspector/Typesetting.vue';
+import CapTab from './common/Tab.vue';
+
 
 export default {
     components: {
         Measure,
         Element,
-        Typesetting
+        Typesetting,
+        CapTab
+    },
+    events: {
+        d_change_index (val) {
+            this.currentView = this.items[val].name;
+        }
+    },
+    data () {
+        return {
+            items: [
+                {
+                    title: "布局",
+                    name: "Measure"
+                },
+                {
+                    title: "效果",
+                    name: "Element"
+                },
+                {
+                    title: "排版",
+                    name: "Typesetting"
+                }
+            ],
+            currentView: "Measure"
+        }
     }
 };
 
