@@ -1,4 +1,7 @@
 <style scoped lang='less'>
+.cap-inspector-input {
+    width: 50px;
+}
 </style>
 
 <template>
@@ -9,6 +12,7 @@
         :type='type'
         :readonly='readonly'
         v-model='value'
+        @input="input"
     >
     <span v-if='optionsReadonly'>
         {{ opstionsTitle }}
@@ -29,11 +33,14 @@
 </template>
 
 <script>
+import CapInputBase from './InputBase.vue';
+
 export default {
     name: 'CapInput',
     ready () {
 
     },
+    mixins: [CapInputBase],
     props: {
         title: {
             type: String,
@@ -82,8 +89,22 @@ export default {
                     return title;
                 }
             }
-
             return '';
+        }
+    },
+    methods: {
+        input () {
+            if (this.value !== '') {
+                return;
+            }
+
+            if (this.type === 'number') {
+                this.value = 0;
+            }
+
+            if (this.type === 'color') {
+                this.value = 'transparent';
+            }
         }
     },
     data () {

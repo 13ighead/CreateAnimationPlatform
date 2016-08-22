@@ -34,10 +34,10 @@
         <div class='label'>
             lid: {{lid}}
             <br>
-            x: {{layer.measure.x}}
-            y: {{layer.measure.y}}
-            width: {{layer.measure.width}}
-            height: {{layer.measure.height}}
+            x: {{layer.measure.position.x}}
+            y: {{layer.measure.position.y}}
+            width: {{layer.measure.size.width}}
+            height: {{layer.measure.size.height}}
             rotate: {{layer.measure.rotate.x}} {{layer.measure.rotate.y}} {{layer.measure.rotate.z}}
             scale: {{layer.measure.scale.x}} {{layer.measure.scale.y}}
         </div>
@@ -64,8 +64,8 @@ export default {
     computed: {
         style () {
             return {
-                width: `${this.layer.measure.width}px`,
-                height: `${this.layer.measure.height}px`,
+                width: `${this.layer.measure.size.width}px`,
+                height: `${this.layer.measure.size.height}px`,
                 transformOrigin: `${this.layer.measure.origin.x}px ${this.layer.measure.origin.y}px`,
                 transform: `translateX(${this.x}px)
                             translateY(${this.y}px)
@@ -91,31 +91,30 @@ export default {
         x: {
             get () {
                 let layers = this.layers;
-                return layers[this.lid].measure.x;
+                return layers[this.lid].measure.position.x;
             },
             set (value) {
-                this.setMeasureX(value);
+                this.set('measure', 'position', 'x', value);
             }
         },
         y: {
             get () {
                 let layers = this.layers;
-                return layers[this.lid].measure.y;
+                return layers[this.lid].measure.position.y;
             },
             set (value) {
-                this.setMeasureY(value);
+                this.set('measure', 'position', 'y', value);
             }
         }
     },
     vuex: {
         getters: {
-            layers: (state) => state.layers,
-            clid: (state) => state.clid
+            layers: state => state.layers,
+            clid: state => state.clid
         },
         actions: {
             setClid: actions.setClid,
-            setMeasureX: actions.setMeasureX,
-            setMeasureY: actions.setMeasureY
+            set: actions.set
         },
         computed: {
 

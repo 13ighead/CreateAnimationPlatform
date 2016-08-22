@@ -1,4 +1,4 @@
-<style scoped lang='less'>
+<style lang='less'>
 @cap-inspector-tab-selectedcolor: #03a9f4;
 @cap-inspector-handle-bgcolor: #ddd;
 
@@ -23,6 +23,10 @@
         .cap-inspector-panel-header {
             padding: 0 0 8px;
             font-size: 18px;
+
+            .cap-inspector-panel-header-title {
+                margin: 0;
+            }
         }
 
         .cap-inspector-panel-inner {

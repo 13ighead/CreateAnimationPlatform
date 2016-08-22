@@ -13,20 +13,20 @@ const state = {
         {
             lid: 0,
             measure: measureInitialState[0],
-            element: elementInitialState,
-            typesetting: typesettingInitialState
+            element: elementInitialState[0],
+            typesetting: typesettingInitialState[0]
         },
         {
             lid: 1,
             measure: measureInitialState[1],
-            element: elementInitialState,
-            typesetting: typesettingInitialState
+            element: elementInitialState[1],
+            typesetting: typesettingInitialState[1]
         },
         {
             lid: 2,
             measure: measureInitialState[2],
-            element: elementInitialState,
-            typesetting: typesettingInitialState
+            element: elementInitialState[2],
+            typesetting: typesettingInitialState[2]
         }
     ],
     clid: 0

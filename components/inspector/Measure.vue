@@ -133,6 +133,33 @@
         </section>
         <section class='cap-inspector-panel-section cap-border-bottom'>
             <header>
+                <h4>拉伸</h4>
+            </header>
+            <div class='cap-inspector-panel-row'>
+                <div class='cap-inspector-panel-item'>
+                    <cap-input
+                        title='水平'
+                        :value.sync='skewX'
+                        type='number'
+                    ></cap-input>
+                </div>
+                <div class='cap-inspector-panel-item'>
+                    <cap-input
+                        title='垂直'
+                        :value.sync='skewY'
+                        type='number'
+                    ></cap-input>
+                </div>
+            </div>
+            <div class='cap-inspector-panel-row'>
+                <div class='cap-inspector-panel-item'>
+                    <label>限制比例</label>
+                    <input type='checkbox'>
+                </div>
+            </div>
+        </section>
+        <section class='cap-inspector-panel-section cap-border-bottom'>
+            <header>
                 <h4>视点</h4>
             </header>
             <div class='cap-inspector-panel-row'>
@@ -180,145 +207,133 @@
 <script>
 import CapInput from '../common/Input.vue';
 import * as actions from '../../models/actions';
-import { getLayer } from '../../models/getters';
+import { get } from '../../models/getters';
 
 export default {
-    ready () {
-
-    },
     props: ['inspector'],
     components: {
         CapInput
     },
-    methods: {
-
-    },
     computed: {
         x: {
             get () {
-                return this.measureX;
+                return this.get('measure', 'position', 'x');
             },
             set (value) {
-                this.setMeasureX(value);
+                this.set('measure', 'position', 'x', value);
             }
         },
         y: {
             get () {
-                return this.measureY;
+                return this.get('measure', 'position', 'y');
             },
             set (value) {
-                this.setMeasureY(value);
+                this.set('measure', 'position', 'y', value);
             }
         },
         width: {
             get () {
-                return this.measureWidth;
+                return this.get('measure', 'size', 'width');
             },
             set (value) {
-                this.setMeasureWidth(value);
+                this.set('measure', 'size', 'width', value);
             }
         },
         height: {
             get () {
-                return this.measureHeight;
+                return this.get('measure', 'size', 'height');
             },
             set (value) {
-                this.setMeasureHeight(value);
+                this.set('measure', 'size', 'height', value);
             }
         },
         scaleX: {
             get () {
-                return this.measureScaleX;
+                return this.get('measure', 'scale', 'x');
             },
             set (value) {
-                this.setMeasureScaleX(value);
+                this.set('measure', 'scale', 'x', value);
             }
         },
         scaleY: {
             get () {
-                return this.measureScaleY;
+                return this.get('measure', 'scale', 'y');
             },
             set (value) {
-                this.setMeasureScaleY(value);
+                this.set('measure', 'scale', 'y', value);
             }
         },
         rotateX: {
             get () {
-                return this.measureRotateX;
+                return this.get('measure', 'rotate', 'x');
             },
             set (value) {
-                this.setMeasureRotateX(value);
+                this.set('measure', 'rotate', 'x', value);
             }
         },
         rotateY: {
             get () {
-                return this.measureRotateY;
+                return this.get('measure', 'rotate', 'y');
             },
             set (value) {
-                this.setMeasureRotateY(value);
+                this.set('measure', 'rotate', 'y', value);
             }
         },
         rotateZ: {
             get () {
-                return this.measureRotateZ;
+                return this.get('measure', 'rotate', 'z');
             },
             set (value) {
-                this.setMeasureRotateZ(value);
+                this.set('measure', 'rotate', 'z', value);
+            }
+        },
+        skewX: {
+            get () {
+                return this.get('measure', 'skew', 'x');
+            },
+            set (value) {
+                this.set('measure', 'skew', 'x', value);
+            }
+        },
+        skewY: {
+            get () {
+                return this.get('measure', 'skew', 'y');
+            },
+            set (value) {
+                this.set('measure', 'skew', 'y', value);
             }
         },
         perspective: {
             get () {
-                return this.measurePerspective;
+                return this.get('measure', 'transform', 'perspective');
             },
             set (value) {
-                this.setMeasurePerspective(value);
+                this.set('measure', 'transform', 'perspective', value);
             }
         },
         originX: {
             get () {
-                return this.measureOriginX;
+                return this.get('measure', 'origin', 'x');
             },
             set (value) {
-                this.setMeasureOriginX(value);
+                this.set('measure', 'origin', 'x', value);
             }
         },
         originY: {
             get () {
-                return this.measureOriginY;
+                return this.get('measure', 'origin', 'y');
             },
             set (value) {
-                this.setMeasureOriginY(value);
+                this.set('measure', 'origin', 'y', value);
             }
         }
     },
     vuex: {
         getters: {
-            measureX: state => getLayer(state).measure.x,
-            measureY: state => getLayer(state).measure.y,
-            measureWidth: state => getLayer(state).measure.width,
-            measureHeight: state => getLayer(state).measure.height,
-            measureScaleX: state => getLayer(state).measure.scale.x,
-            measureScaleY: state => getLayer(state).measure.scale.y,
-            measureRotateX: state => getLayer(state).measure.rotate.x,
-            measureRotateY: state => getLayer(state).measure.rotate.y,
-            measureRotateZ: state => getLayer(state).measure.rotate.z,
-            measurePerspective: state => getLayer(state).measure.perspective,
-            measureOriginX: state => getLayer(state).measure.origin.x,
-            measureOriginY: state => getLayer(state).measure.origin.y
+            get: state => get(state)
         },
         actions: {
-            setMeasureX: actions.setMeasureX,
-            setMeasureY: actions.setMeasureY,
-            setMeasureWidth: actions.setMeasureWidth,
-            setMeasureHeight: actions.setMeasureHeight,
-            setMeasureScaleX: actions.setMeasureScaleX,
-            setMeasureScaleY: actions.setMeasureScaleY,
-            setMeasureRotateX: actions.setMeasureRotateX,
-            setMeasureRotateY: actions.setMeasureRotateY,
-            setMeasureRotateZ: actions.setMeasureRotateZ,
-            setMeasurePerspective: actions.setMeasurePerspective,
-            setMeasureOriginX: actions.setMeasureOriginX,
-            setMeasureOriginY: actions.setMeasureOriginY
+            set: actions.set
         }
     }
 };

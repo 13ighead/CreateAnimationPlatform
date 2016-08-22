@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import CapTabItem from './Tab-item.vue';
+import CapTabItem from './TabItem.vue';
 
 export default {
     name: 'CapTab',

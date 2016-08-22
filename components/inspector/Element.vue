@@ -30,7 +30,7 @@
                 <div class='cap-inspector-panel-item'>
                     <cap-input
                         title='宽度'
-                        value='0'
+                        :value.sync='borderWidth'
                         type='number'
                         :options-readonly=true
                         :options-value=0
@@ -40,7 +40,7 @@
                 <div class='cap-inspector-panel-item'>
                     <cap-input
                         title='半径'
-                        value='0'
+                        :value.sync='borderRadius'
                         type='number'
                         :options-readonly=true
                         :options-value=0
@@ -105,7 +105,7 @@
                 <div class='cap-inspector-panel-item'>
                     <cap-input
                         title='x'
-                        value='0'
+                        :value.sync='boxShadowX'
                         type='number'
                         :options-readonly=true
                         :options-value=0
@@ -115,7 +115,7 @@
                 <div class='cap-inspector-panel-item'>
                     <cap-input
                         title='y'
-                        value='0'
+                        :value.sync='boxShadowY'
                         type='number'
                         :options-readonly=true
                         :options-value=0
@@ -125,7 +125,7 @@
                 <div class='cap-inspector-panel-item'>
                     <cap-input
                         title='模糊度'
-                        value='0'
+                        :value.sync='boxShadowBlur'
                         type='number'
                         :options-readonly=true
                         :options-value=0
@@ -206,11 +206,40 @@
 </template>
 
 <script>
-import Input from "../common/Input.vue";
+import CapInput from '../common/Input.vue';
+import * as actions from '../../models/actions';
+import { get } from '../../models/getters';
 
 export default {
+    props: ['inspector'],
     components: {
-        capInput: Input
+        CapInput
+    },
+    computed: {
+        borderWidth: {
+            get () {
+                return this.get('element', 'border', 'width');
+            },
+            set (value) {
+                this.set('element', 'border', 'width', value);
+            }
+        },
+        borderRadius: {
+            get () {
+                return this.get('element', 'border', 'radius');
+            },
+            set (value) {
+                this.set('element', 'border', 'radius', value);
+            }
+        }
+    },
+    vuex: {
+        getters: {
+            get: state => get(state)
+        },
+        actions: {
+            set: actions.set
+        }
     }
 };
 </script>

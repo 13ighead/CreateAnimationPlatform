@@ -49,19 +49,19 @@ export default {
         curLayerX: {
             get () {
                 let layers = this.layers;
-                return layers[this.clid].measure.x;
+                return layers[this.clid].measure.position.x;
             },
             set (value) {
-                this.setMeasureX(value);
+                this.set('measure', 'position', 'x', value);
             }
         },
         curLayerY: {
             get () {
                 let layers = this.layers;
-                return layers[this.clid].measure.y;
+                return layers[this.clid].measure.position.y;
             },
             set (value) {
-                this.setMeasureY(value);
+                this.set('measure', 'position', 'y', value);
             }
         },
         curLayerOrigin: {
@@ -78,11 +78,13 @@ export default {
         },
         actions: {
             setClid: actions.setClid,
-            setMeasureX: actions.setMeasureX,
-            setMeasureY: actions.setMeasureY
+            set: actions.set
         }
     },
     methods: {
+        /**
+         * 处理拖动事件
+         */
         drag () {
             if (!this.dragStartFlag) {
                 return;
@@ -106,11 +108,15 @@ export default {
                     break;
             }
         },
+        /**
+         * 按下时根据点击区域定义初始值
+         */
         dragStart () {
             this.draggableType = event.target.dataset.draggable;
+            let clid;
             switch (this.draggableType) {
                 case 'layer':
-                    var clid = event.target.dataset.lid;
+                    clid = event.target.dataset.lid;
                     clid && this.setClid(clid);
 
                     this.dragStartFlag = true;
@@ -125,7 +131,7 @@ export default {
                     };
                     break;
                 case 'anchor':
-                    var clid = this.clid;
+                    clid = this.clid;
 
                     console.log(this.curLayerOrigin);
 
@@ -144,14 +150,29 @@ export default {
                     break;
             }
         },
+        /**
+         * 拖动事件结束后处理
+         */
         dragEnd () {
-            switch (this.draggableType) {
-                case 'layer':
-                    this.dragStartFlag = false;
-                    break;
-                default:
-                    break;
-            }
+            this.draggableType = null;
+            this.dragStartFlag = false;
+            this.dragStartPos = {};
+            this.domStartPosition = {};
+
+            // switch (this.draggableType) {
+            //     case 'layer':
+            //         this.dragStartFlag = false;
+            //         this.dragStartPos = {};
+            //         this.domStartPosition = {};
+            //         break;
+            //     case 'anchor':
+            //         this.dragStartFlag = false;
+            //         this.dragStartPos = {};
+            //         this.domStartPosition = {};
+            //         break;
+            //     default:
+            //         break;
+            // }
         }
     }
 };
